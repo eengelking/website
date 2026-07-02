@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post">
+    <div class="container">
+      <a class="mono back-link" href="/blog">← Blog</a>
+      <p class="post-date mono">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      <h1>{post.data.title}</h1>
+      <div class="post-body">
+        <Content />
+      </div>
+      <div class="post-tags">
+        {post.data.tags.map((tag) => <span class="mono">{tag}</span>)}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding: var(--space-6) 0;
+  }
+
+  .back-link {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .post-date {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin: var(--space-3) 0 var(--space-1);
+  }
+
+  .post-body {
+    max-width: 65ch;
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    margin-top: var(--space-4);
+  }
+
+  .post-body :global(p) {
+    margin-bottom: var(--space-3);
+  }
+
+  .post-tags {
+    display: flex;
+    gap: var(--space-1);
+    margin-top: var(--space-5);
+  }
+
+  .post-tags span {
+    font-size: var(--text-xs);
+    color: var(--color-signal);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2px 8px;
+  }
+</style>

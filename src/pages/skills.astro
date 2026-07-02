@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SkillSearch } from '../components/skills/SkillSearch';
+---
+
+<BaseLayout title="Skills" description="A searchable breakdown of Ed Engelking's technical and leadership expertise.">
+  <section class="skills-header">
+    <div class="container">
+      <p class="eyebrow">skills</p>
+      <h1>What I've picked up along the way</h1>
+      <p class="intro">Thirty years of hands-on work in cloud architecture, DevSecOps, and software development: standing systems up, hardening them, and being the one who got paged when they broke. Search for something specific below, or click a category to browse.</p>
+    </div>
+  </section>
+
+  <section class="skills-search-section">
+    <div class="container">
+      <h2>Full breakdown</h2>
+      <SkillSearch client:load />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .skills-header {
+    padding: var(--space-6) 0 var(--space-4);
+  }
+
+  .intro {
+    max-width: 60ch;
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+  }
+
+  .skills-search-section {
+    border-top: 1px solid var(--color-border);
+  }
+</style>

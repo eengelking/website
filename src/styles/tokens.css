@@ -1,0 +1,46 @@
+/*
+  Design signature: the career timeline reads like a system status log —
+  monospace timestamps, an amber "service online" indicator, and an uptime
+  line that fills as you scroll. Amber ties back to CRT/NOC monitoring walls
+  (broadcast master control, the NOC walls built at PFS/ShiftPixy) rather
+  than a generic dark-mode accent color.
+*/
+:root {
+  /* Color */
+  --color-bg: #0b0f14;
+  --color-surface: #131a21;
+  --color-surface-raised: #1a222b;
+  --color-border: #232d38;
+  --color-text: #e8e6df;
+  --color-text-muted: #8b95a1;
+  --color-accent: #e8a33d;
+  --color-accent-dim: #8a611f;
+  --color-signal: #4fa3c7;
+
+  /* Type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: clamp(1.75rem, 5vw, 2.5rem);
+  --text-3xl: clamp(2rem, 7vw, 3.5rem);
+  --text-4xl: clamp(2.25rem, 9vw, 4.75rem);
+
+  /* Space (8px rhythm) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  --radius: 3px;
+  --max-width: 72rem;
+}

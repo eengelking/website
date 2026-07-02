@@ -1,0 +1,81 @@
+---
+import { hero } from '../../data/hero';
+---
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow hero-status">
+      <span class="pulse" aria-hidden="true"></span> status: available for remote roles
+    </p>
+    <div class="hero-card">
+      <h1>{hero.name}</h1>
+      <p class="hero-role">{hero.title} <span class="divider">·</span> <span class="mono tagline">{hero.tagline}</span></p>
+      <p class="hero-subtext">{hero.subtext}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+  }
+
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 0 rgba(232, 163, 61, 0.6);
+    animation: pulse 2.4s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(232, 163, 61, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(232, 163, 61, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 163, 61, 0); }
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    max-width: 20ch;
+  }
+
+  .hero-role {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin-top: var(--space-2);
+  }
+
+  .divider {
+    color: var(--color-text-muted);
+  }
+
+  .tagline {
+    color: var(--color-signal);
+  }
+
+  .hero-subtext {
+    max-width: 52ch;
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+    font-size: var(--text-lg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { animation: none; }
+  }
+</style>
