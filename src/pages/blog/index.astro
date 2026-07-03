@@ -7,7 +7,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 ---
 
-<BaseLayout title="Blog" description="Notes on infrastructure, architecture, and building things that hold up.">
+<BaseLayout title="Blog" description="Notes on infrastructure, architecture, and building things that hold up." noindex>
   <section class="blog-header">
     <div class="container">
       <p class="eyebrow">blog</p>

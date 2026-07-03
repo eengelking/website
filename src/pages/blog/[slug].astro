@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={post.data.title} description={post.data.description} noindex>
   <article class="post">
     <div class="container">
       <a class="mono back-link" href="/blog">← Blog</a>
