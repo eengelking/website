@@ -1,13 +1,29 @@
 ---
 import Nav from '../components/Nav.astro';
 import '../styles/global.css';
+import { hero } from '../data/hero';
+import { contact } from '../data/contact';
 
 interface Props {
   title: string;
   description?: string;
+  titleOverride?: string;
+  noindex?: boolean;
 }
 
-const { title, description = 'Ed Engelking II — Chief Architect. 30 years building and operating production systems.' } = Astro.props;
+const { title, description = 'Ed Engelking II — Chief Architect. 30 years building and operating production systems.', titleOverride, noindex = false } = Astro.props;
+const pageTitle = titleOverride ?? `${title} · Ed Engelking II`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL('/og-image.png', Astro.site);
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: hero.name,
+  jobTitle: hero.title,
+  url: 'https://edengelking.com',
+  sameAs: [contact.linkedinUrl],
+};
 ---
 
 <!doctype html>
@@ -17,18 +33,27 @@ const { title, description = 'Ed Engelking II — Chief Architect. 30 years buil
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0b0f14" />
-    <title>{title} · Ed Engelking II</title>
+    <meta name="theme-color" content="#161a20" />
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} · Ed Engelking II`} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
   </head>
   <body>
     <Nav />

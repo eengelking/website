@@ -6,19 +6,20 @@ function StatValue({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-40px' });
   const numericMatch = value.match(/^(\$?)([\d.]+)(.*)$/);
-  const [display, setDisplay] = useState(numericMatch ? `${numericMatch[1]}0${numericMatch[3]}` : value);
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
-    if (!inView || !numericMatch) {
-      if (inView) setDisplay(value);
-      return;
-    }
+    if (!inView || !numericMatch) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const [, prefix, numStr, suffix] = numericMatch;
     const target = parseFloat(numStr);
     const isDecimal = numStr.includes('.');
     const duration = 2200;
     const delay = 300;
     const start = performance.now() + delay;
+
+    setDisplay(`${prefix}0${suffix}`);
 
     function tick(now: number) {
       const progress = Math.min(Math.max((now - start) / duration, 0), 1);
