@@ -13,7 +13,7 @@ import { SkillSearch } from '../components/skills/SkillSearch';
   </section>
 
   <section class="skills-search-section">
-    <div class="container">
+    <div class="container skills-search-container">
       <h2>Full breakdown</h2>
       <SkillSearch client:load />
     </div>
@@ -26,12 +26,14 @@ import { SkillSearch } from '../components/skills/SkillSearch';
   }
 
   .intro {
-    max-width: 60ch;
+    max-width: 75ch;
     color: var(--color-text-muted);
     font-size: var(--text-lg);
+    margin-top: var(--space-2);
   }
 
-  .skills-search-section {
+  .skills-search-container {
     border-top: 1px solid var(--color-border);
+    padding-top: var(--space-6);
   }
 </style>

@@ -4,9 +4,9 @@ export const timeline: TimelineRole[] = [
   {
     id: 'alphabravo',
     company: 'AlphaBravo',
-    title: 'Chief Architect',
+    title: 'Engineer → Principal Engineer → Chief Architect',
     dateRange: '2020 - 2026',
-    scope: 'Global — US commercial, international, and classified government environments across AWS, Azure, on-prem, and air-gapped deployments',
+    scope: 'DevSecOps security startup — global scope spanning US commercial, international, and classified government environments across AWS, Azure, on-prem, and air-gapped deployments',
     summary: 'Built and led the engineering team, holding full architectural authority across all engineering. Reported directly to the CTO and co-defined product roadmap priorities.',
     tags: ['Kubernetes', 'Multi-Agent LLM', 'DevSecOps', 'GitOps', 'NIST/STIG'],
     bullets: [
@@ -42,7 +42,7 @@ export const timeline: TimelineRole[] = [
     company: 'Sourceability',
     title: 'Sr. DevOps Architect → DevOps Manager',
     dateRange: '2017 - 2019',
-    scope: 'B2B enterprise, serving clients across North America, EMEA, and APAC',
+    scope: 'B2B electronic components sourcing and distribution platform, serving clients across North America, EMEA, and APAC',
     summary: 'Built the DevOps/SRE function from zero, growing a dedicated team to three engineers within a broader engineering organization of 20+. Managed a $1M annual infrastructure budget. Reported to Chief Architect/CTO.',
     tags: ['AWS', 'Kubernetes', 'Elasticsearch', 'Terraform', 'Cost Optimization'],
     bullets: [
@@ -114,7 +114,7 @@ export const timeline: TimelineRole[] = [
     title: 'Director of IT',
     dateRange: '2011 - 2012',
     location: 'Irvine, CA',
-    scope: 'Five locations across two continents supporting four interdependent subsidiaries',
+    scope: 'Parent company spanning print fulfillment, e-commerce, IT services, and software subsidiaries — five locations across two continents',
     summary: 'Recruited by the CEO and relocated to California to lead a 25-person global IT organization that had operated without effective management.',
     tags: ['Global IT Leadership', 'PCI-DSS', 'Vendor Negotiation', 'Automation', 'Multi-Site Operations'],
     bullets: [
@@ -151,10 +151,10 @@ export const timeline: TimelineRole[] = [
   {
     id: 'pfs',
     company: 'Print Fulfillment Services',
-    title: 'IT Manager',
+    title: 'System Administrator → IT Manager',
     dateRange: '2006 - 2010',
     location: 'Louisville, KY',
-    scope: '100,000 sq ft, 24/7 print production facility',
+    scope: '100,000 sq ft, 24/7 print production facility, a subsidiary of Farheap Solutions',
     summary: 'Led a greenfield IT infrastructure build, going from empty building to fully operational in approximately six months working with an initial 3-person engineering team. Promoted from sysadmin to IT Manager within the first six months; received multiple merit raises throughout a four-year tenure. Maintained 99.99% uptime with zero production outages attributable to IT across the entire engagement.',
     tags: ['Infrastructure Build-Out', 'VMware ESXi', '24/7 Operations', 'Automation', 'Platform Architecture'],
     bullets: [

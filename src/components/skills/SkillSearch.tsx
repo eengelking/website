@@ -11,12 +11,12 @@ const categoryCounts = (() => {
 
 export function SkillSearch() {
   const [query, setQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategories, setActiveCategories] = useState<Set<string>>(() => new Set());
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return skills.filter((s) => {
-      if (activeCategory && s.category !== activeCategory) return false;
+      if (activeCategories.size > 0 && !activeCategories.has(s.category)) return false;
       if (!q) return true;
       return (
         s.name.toLowerCase().includes(q) ||
@@ -24,7 +24,7 @@ export function SkillSearch() {
         s.tags.some((tag) => tag.includes(q))
       );
     });
-  }, [query, activeCategory]);
+  }, [query, activeCategories]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, typeof filtered>();
@@ -36,7 +36,15 @@ export function SkillSearch() {
   }, [filtered]);
 
   function toggleCategory(category: string) {
-    setActiveCategory((current) => (current === category ? null : category));
+    setActiveCategories((current) => {
+      const next = new Set(current);
+      if (next.has(category)) {
+        next.delete(category);
+      } else {
+        next.add(category);
+      }
+      return next;
+    });
   }
 
   return (
@@ -46,9 +54,9 @@ export function SkillSearch() {
           <button
             key={category}
             type="button"
-            className={`chip mono${activeCategory === category ? ' active' : ''}`}
+            className={`chip mono${activeCategories.has(category) ? ' active' : ''}`}
             onClick={() => toggleCategory(category)}
-            aria-pressed={activeCategory === category}
+            aria-pressed={activeCategories.has(category)}
           >
             {category} <span className="chip-count">{count}</span>
           </button>

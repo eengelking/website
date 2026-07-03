@@ -7,15 +7,22 @@
 */
 :root {
   /* Color */
-  --color-bg: #0b0f14;
-  --color-surface: #131a21;
-  --color-surface-raised: #1a222b;
-  --color-border: #232d38;
-  --color-text: #e8e6df;
-  --color-text-muted: #8b95a1;
-  --color-accent: #e8a33d;
-  --color-accent-dim: #8a611f;
-  --color-signal: #4fa3c7;
+  --color-bg: #161a20;
+  --color-surface: #1c222b;
+  --color-surface-raised: #262d37;
+  --color-border: #262d37;
+  --color-text: #e9e7e0;
+  --color-text-muted: #93a0ad;
+  --color-accent: #e8b34d;
+  --color-accent-dim: #a67f36;
+  --color-signal: #8fc5e8;
+  --color-hero: linear-gradient(135deg, #122a3d 0%, #1c4360 60%, #215680 100%);
+  --color-hero-border: #2f6690;
+  --color-hero-text: #f2f8fc;
+  --color-hero-role: #8fc5e8;
+  --color-hero-subtext: #c3dbea;
+  --color-tag: #ff9a52;
+  --color-tag-border: #6b3a1a;
 
   /* Type */
   --font-display: 'Space Grotesk', system-ui, sans-serif;

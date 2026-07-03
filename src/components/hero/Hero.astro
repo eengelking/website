@@ -28,10 +28,14 @@ import { hero } from '../../data/hero';
   }
 
   .hero-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: var(--color-hero);
+    border: 1px solid var(--color-hero-border);
     border-radius: var(--radius);
     padding: var(--space-5);
+  }
+
+  .hero-card h1 {
+    color: var(--color-hero-text);
   }
 
   .pulse {
@@ -56,21 +60,22 @@ import { hero } from '../../data/hero';
 
   .hero-role {
     font-size: var(--text-lg);
-    color: var(--color-text);
+    color: var(--color-hero-role);
     margin-top: var(--space-2);
   }
 
   .divider {
-    color: var(--color-text-muted);
+    color: var(--color-hero-role);
+    opacity: 0.6;
   }
 
   .tagline {
-    color: var(--color-signal);
+    color: var(--color-accent);
   }
 
   .hero-subtext {
     max-width: 52ch;
-    color: var(--color-text-muted);
+    color: var(--color-hero-subtext);
     margin-top: var(--space-3);
     font-size: var(--text-lg);
   }
