@@ -1,0 +1,79 @@
+---
+name: write-post
+description: Interviews Ed about a rough set of bullet points and drafts a finished blog or interests post as a markdown file in this Astro site's content collections (src/content/blog or src/content/interests). Use this whenever Ed hands over bullets for a post, says something like "help me write a blog post about X" or "I want to write an interests post about Y", or asks to turn notes/an idea into a post for the site. Also use it if he asks to revise or polish a draft post that already exists in one of those directories.
+---
+
+# Write Post
+
+Both the blog and interests sections of edengelking.com are live and indexable. He'll hand you a rough list of bullets — not prose — and wants help turning that into a finished markdown file that matches how the rest of the site is built and how he actually talks, staged as a draft until he says it's ready to go live.
+
+## Step 1: Figure out which collection and interview Ed
+
+Don't draft from the bullets right away. A list of bullets tells you *what* he wants to cover, not the shape of the piece, and drafting too early produces something generic that then needs to be re-argued from scratch.
+
+First, confirm which collection this is for if it isn't obvious from what he's said:
+- **blog** (`src/content/blog/`) — technical/professional writing: architecture, incidents, tools, career reflections.
+- **interests** (`src/content/interests/`) — personal, outside-of-work topics.
+
+Then ask whatever subset of these actually needs answering — skip ones the bullets already make obvious:
+- What's the actual point of this post? What should someone remember after reading it?
+- Who is this for — other engineers, a general audience, future-Ed?
+- Roughly how long? A quick note (like `hello-world.md`) or something with real depth?
+- Any companies, systems, incidents, or people that can be named, and anything that's off-limits?
+- Is there a natural opening — a story, a specific moment — or should it lead with the idea directly?
+
+Only move to drafting once you have a real angle, not just a topic.
+
+## Step 2: Create a branch for the work
+
+Once you know the collection and have a rough topic (you don't need the full interview finished yet), check out a new git branch before writing anything, so each post is isolated and easy for Ed to review or abandon independently:
+
+- **Name format**: `<prefix>-<slug>-<date>`
+  - prefix is `blog` for blog posts, `interest` (singular) for interests posts
+  - slug is a short kebab-case topic identifier, 1-3 words, no filler (e.g. `kubectl`, `germany`, `incident-postmortem`)
+  - date is `YYYYMMDD` (today's date)
+  - examples: `blog-kubectl-20260704`, `interest-germany-20260704`
+- Check `git status` first. If there are uncommitted changes unrelated to this post, flag it to Ed rather than silently carrying them onto the new branch.
+- Branch off the current tip of `main` (`git checkout main && git checkout -b <branch-name>`), assuming `main` is clean and up to date. If Ed is mid-work on another branch when this starts, ask before switching away from it.
+
+Do the actual `git checkout -b` yourself — don't just tell Ed the branch name and leave it to him.
+
+## Step 3: Read the room before you write
+
+Before drafting, read one or two existing posts in the target collection (e.g. `src/content/blog/hello-world.md`, `src/content/interests/outside-of-work.md`) so the new post sits naturally next to them in tone and length. Ed's writing is understated and specific — concrete systems, eras, and details, not generic claims about "extensive experience" or "passion for technology."
+
+## Step 4: Write like Ed, not like an assistant
+
+This is the part that matters most and the easiest to get wrong. A post that reads as AI-written defeats the entire point of the section. Concretely:
+
+- **No em-dashes.** Rewrite with a period, a comma, or parentheses instead.
+- **No "it's not just X, it's Y" constructions**, and no other symmetric-contrast crutches leaned on for rhythm rather than meaning.
+- **No rule-of-three padding** — don't reach for a third adjective or example just to complete a triplet. Say it in one or two and stop.
+- **No stock transitions** ("moreover," "furthermore," "in today's world," "at the end of the day").
+- **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
+- Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
+
+If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
+
+## Step 5: Draft the file
+
+- Filename: `src/content/{blog,interests}/<kebab-case-slug>.md`, slug derived from the title (reuse the branch's topic slug if it still fits, but the file slug should match the title, not necessarily the branch name verbatim).
+- Frontmatter must satisfy the schema in `src/content.config.ts` (identical for both collections): `title`, `description`, `date` (`YYYY-MM-DD`, use today's date unless Ed says otherwise), `tags` (array), `draft` (bool).
+  - Before picking tags, list every tag already used across the *other* files in the same collection (`grep -h '^tags:' src/content/{blog,interests}/*.md` or just read the frontmatter of each file) so the choice is informed by the real set, not just the one or two files you happened to look at earlier. Prefer reusing an existing tag over inventing a near-duplicate (`k8s` vs `kubernetes`). If none of the existing tags fit, propose the new one to Ed and confirm before adding it — tags are effectively a taxonomy for the site and drift is easy to introduce one post at a time.
+  - Write every new file with `draft: true` for the initial draft, regardless of collection — `draft` defaults to `false` in the schema if the field is omitted entirely, so always write it explicitly rather than leaving it out. Don't ask about publish status yet; there's nothing to decide until the content itself is settled.
+- Write `description` as real ad copy (it becomes the page's meta description and social preview text), not a restatement of the title.
+- Before finalizing, check the draft doesn't contain anything on the denylist in `scripts/check-sensitive.sh` (currently Ed's personal email and compensation figures) — if the topic naturally brushes up against either, flag it to Ed rather than silently omitting.
+
+Write the file directly into the repo once drafted. Then show Ed the rendered result and ask what he'd change — treat the first pass as a draft to react to, not a final answer.
+
+**Ask about publish status exactly once per post — the first time it reaches a real stopping point** (Ed stops requesting changes and the piece reads as complete, not a skeleton). At that single moment, ask directly whether to keep `draft: true` or flip to `draft: false`; don't assume either way, and don't let it slide by just because the content is done. If he's unsure, staying in draft is the safer default.
+
+After that first ask, the question is answered — don't repeat it on every subsequent tweak. If Ed comes back later (same session or a new one) asking for a typo fix, a reworded sentence, or any other small edit to a post whose publish status has already been decided, just make the edit and leave `draft` alone. Only bring publishing up again if:
+- Ed asks about it directly, or
+- The edit is substantial enough to change whether the post is actually ready for the first time — e.g. he asked you to flesh out a rough outline into a real piece, not just polish something already complete.
+
+The goal is to ask exactly when it's a real decision and stay quiet otherwise — repeating it on every revision is noise, not carefulness.
+
+## Step 6: Know what actually gates publication
+
+Blog and interests are live, indexable sections (Nav links visible, in the sitemap, no `noindex`), and both have individual detail pages (`/blog/<slug>`, `/interests/<slug>`) that link out from their index. Both collections gate publication the same way now: `getCollection()` in `blog/index.astro`, `blog/[slug].astro`, `interests.astro`, and `interests/[slug].astro` all filter on `!data.draft`, so a committed `draft: true` file exists in the repo and is safe to merge to `main` without going live. Never set `draft: false` as a side effect of drafting — that's a visible, shared-state change (it makes the entry crawlable/indexable) and should only happen when Ed explicitly says it's ready.
