@@ -20,7 +20,8 @@ Then ask whatever subset of these actually needs answering — skip ones the bul
 - Who is this for — other engineers, a general audience, future-Ed?
 - Roughly how long? A quick note (like `hello-world.md`) or something with real depth?
 - Any companies, systems, incidents, or people that can be named, and anything that's off-limits?
-- Is there a natural opening — a story, a specific moment — or should it lead with the idea directly?
+- Is there a natural opening — a story, a specific moment? (Narrative incident posts should open on the hook, not a stated thesis — see Step 4's "tell them" note. "Lead with the idea directly" is only a live option for explainer-format pieces.)
+- Is this one meant to go live once it's finished, or does he want it staged as a draft regardless of how it turns out? If he's not sure yet, that's fine, treat it as undecided and fall back to the stopping-point ask in Step 5.
 
 Only move to drafting once you have a real angle, not just a topic.
 
@@ -55,6 +56,12 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 - **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
 - Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
 - **Use bullets for enumerable content** — a list of failure causes, a set of discrete lessons learned, concrete steps taken — instead of burying it in a run-on sentence. It reads easier and the items stand out. But don't bullet a closing/"moral of the story" paragraph that's meant to land as one continuous thought building to a final line; breaking that up kills the payoff. When in doubt, ask whether the sentence is a list of separate things or a single idea building momentum, and only bullet the former.
+- **Use `##` headers, but only when the piece has genuinely distinct topics, not just narrative beats.** A single-incident story (setup, complication, resolution, payoff line) should stay as flowing prose with no headers, like `earning-the-server-room.md` or `the-race-condition-that-ate-a-key.md` — chopping a one-story arc into sections fights the same momentum-building quality that already rules out bulleting a closing paragraph. Reach for headers on multi-part technical/architecture pieces where the content actually splits into separate subjects (e.g. the problem, how a specific mechanism works, how it's wired together, why it holds up) — see `the-key-that-never-touched-the-disk.md`. If you're not sure which kind of piece it is, ask: is this one continuous story, or several distinct things worth naming separately? Only header the latter.
+
+- **Every post should "tell them, tell them, tell them what you told them," but what that looks like depends on format:**
+  - **Narrative posts**: the opening hook *is* the "tell them what you're going to tell them" — it sets up the kind of problem this is without stating a thesis. Never add an explicit "in this post I'll cover..." sentence; that's a formulaic tell, not a hook.
+  - **Explainer posts** (the ones that earn headers per the rule above): an explicit short preview paragraph before the first header is expected, not incidental — see the "so the key had to be generated once..." paragraph before `## The shape of it` in `the-key-that-never-touched-the-disk.md`.
+  - **Every post, regardless of format**, needs the "tell them what you told them" close: a payoff line or short reflection that ties back to the opening problem (a closing bullet list of lessons, or a single landing line like the ending of `earning-the-server-room.md`). Keep it in Ed's voice, never a labeled "Conclusion" section.
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
@@ -63,13 +70,13 @@ If you're not sure whether a line sounds like Ed or sounds like a chatbot, read 
 - Filename: `src/content/{blog,interests}/<kebab-case-slug>.md`, slug derived from the title (reuse the branch's topic slug if it still fits, but the file slug should match the title, not necessarily the branch name verbatim).
 - Frontmatter must satisfy the schema in `src/content.config.ts` (identical for both collections): `title`, `description`, `date` (`YYYY-MM-DD`, use today's date unless Ed says otherwise), `tags` (array), `draft` (bool).
   - Before picking tags, list every tag already used across the *other* files in the same collection (`grep -h '^tags:' src/content/{blog,interests}/*.md` or just read the frontmatter of each file) so the choice is informed by the real set, not just the one or two files you happened to look at earlier. Prefer reusing an existing tag over inventing a near-duplicate (`k8s` vs `kubernetes`). If none of the existing tags fit, propose the new one to Ed and confirm before adding it — tags are effectively a taxonomy for the site and drift is easy to introduce one post at a time.
-  - Write every new file with `draft: true` for the initial draft, regardless of collection — `draft` defaults to `false` in the schema if the field is omitted entirely, so always write it explicitly rather than leaving it out. Don't ask about publish status yet; there's nothing to decide until the content itself is settled.
+  - Always write `draft` explicitly rather than leaving it out — the schema defaults to `false` if the field is omitted entirely, and an implicit default is not a decision anyone actually made. Set its value from whatever Ed said in Step 1: if he already gave a publish intent, write that in on the very first save instead of parking it at `true` out of habit. If he was undecided in Step 1, use `true` only as a placeholder until the stopping-point ask below resolves it, not as a blanket default applied without asking.
 - Write `description` as real ad copy (it becomes the page's meta description and social preview text), not a restatement of the title.
 - Before finalizing, check the draft doesn't contain anything on the denylist in `scripts/check-sensitive.sh` (currently Ed's personal email and compensation figures) — if the topic naturally brushes up against either, flag it to Ed rather than silently omitting.
 
 Write the file directly into the repo once drafted. Then show Ed the rendered result and ask what he'd change — treat the first pass as a draft to react to, not a final answer.
 
-**Ask about publish status exactly once per post — the first time it reaches a real stopping point** (Ed stops requesting changes and the piece reads as complete, not a skeleton). At that single moment, ask directly whether to keep `draft: true` or flip to `draft: false`; don't assume either way, and don't let it slide by just because the content is done. If he's unsure, staying in draft is the safer default.
+**If publish status wasn't already settled in Step 1, ask about it exactly once per post — the first time it reaches a real stopping point** (Ed stops requesting changes and the piece reads as complete, not a skeleton). At that single moment, ask directly whether to keep `draft: true` or flip to `draft: false`; don't assume either way, and don't let it slide by just because the content is done. If he's unsure, staying in draft is the safer default.
 
 After that first ask, the question is answered — don't repeat it on every subsequent tweak. If Ed comes back later (same session or a new one) asking for a typo fix, a reworded sentence, or any other small edit to a post whose publish status has already been decided, just make the edit and leave `draft` alone. Only bring publishing up again if:
 - Ed asks about it directly, or
