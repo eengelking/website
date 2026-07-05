@@ -47,7 +47,7 @@ const blogPostingLd = {
   <article class="post">
     <div class="container">
       <a class="mono back-link" href="/blog">← Blog</a>
-      <p class="post-date mono">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      <p class="post-date mono">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
       <h1>{post.data.title}</h1>
       <div class="post-body">
         <Content />

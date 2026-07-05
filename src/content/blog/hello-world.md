@@ -1,7 +1,7 @@
 ---
 title: "Hello, World"
 description: "Why I'm starting this blog and what I plan to write about."
-date: 2026-07-02
+date: 2026-06-29
 tags: ["meta"]
 ---
 

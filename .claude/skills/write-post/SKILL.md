@@ -38,6 +38,8 @@ Once you know the collection and have a rough topic (you don't need the full int
 
 Do the actual `git checkout -b` yourself — don't just tell Ed the branch name and leave it to him.
 
+**Exception — batch drafting:** if Ed says he's writing several posts together to publish as a batch, skip the per-post branch and stay on the current branch for all of them. In that mode, give each post a distinct `date` (don't let them all land on the same day — stagger them) so the batch doesn't read as a dump when published.
+
 ## Step 3: Read the room before you write
 
 Before drafting, read one or two existing posts in the target collection (e.g. `src/content/blog/hello-world.md`, `src/content/interests/outside-of-work.md`) so the new post sits naturally next to them in tone and length. Ed's writing is understated and specific — concrete systems, eras, and details, not generic claims about "extensive experience" or "passion for technology."
@@ -46,12 +48,13 @@ Before drafting, read one or two existing posts in the target collection (e.g. `
 
 This is the part that matters most and the easiest to get wrong. A post that reads as AI-written defeats the entire point of the section. Concretely:
 
-- **No em-dashes.** Rewrite with a period, a comma, or parentheses instead.
+- **No em-dashes. Zero. Not one, anywhere in the file** — not in the body, not in the title, not in the description. This is the single most common tell and the rule most likely to get missed by half-checking. Rewrite with a period, a comma, or parentheses instead. Before showing Ed any draft (new or revised), run `grep -n "—" <the file>` and fix every hit — don't rely on having "written carefully."
 - **No "it's not just X, it's Y" constructions**, and no other symmetric-contrast crutches leaned on for rhythm rather than meaning.
 - **No rule-of-three padding** — don't reach for a third adjective or example just to complete a triplet. Say it in one or two and stop.
 - **No stock transitions** ("moreover," "furthermore," "in today's world," "at the end of the day").
 - **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
 - Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
+- **Use bullets for enumerable content** — a list of failure causes, a set of discrete lessons learned, concrete steps taken — instead of burying it in a run-on sentence. It reads easier and the items stand out. But don't bullet a closing/"moral of the story" paragraph that's meant to land as one continuous thought building to a final line; breaking that up kills the payoff. When in doubt, ask whether the sentence is a list of separate things or a single idea building momentum, and only bullet the former.
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
