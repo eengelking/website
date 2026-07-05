@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { PostList } from '../components/posts/PostList';
-import { interestsIntro } from '../data/pageIntros';
+import { interestsIntro, opinionsDisclaimer } from '../data/pageIntros';
 
 const entries = (await getCollection('interests', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -42,6 +42,7 @@ const interestsListLd = {
       <p class="eyebrow">interests</p>
       <h1>Outside of work</h1>
       <p class="page-intro">{interestsIntro}</p>
+      <p class="disclaimer mono">{opinionsDisclaimer}</p>
     </div>
   </section>
 
@@ -63,8 +64,17 @@ const interestsListLd = {
   }
 
   .page-intro {
-    max-width: 55ch;
+    max-width: 75ch;
     color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    margin-top: var(--space-2);
+  }
+
+  .disclaimer {
+    max-width: 75ch;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+    font-size: var(--text-xs);
     margin-top: var(--space-2);
   }
 </style>

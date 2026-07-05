@@ -91,6 +91,15 @@ const blogPostingLd = {
     margin-bottom: var(--space-3);
   }
 
+  .post-body :global(code) {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    border-radius: var(--radius);
+    padding: 0.15em 0.4em;
+    font-size: 0.9em;
+  }
+
   .post-tags {
     display: flex;
     gap: var(--space-1);
