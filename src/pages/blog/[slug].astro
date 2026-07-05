@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { hero } from '../../data/hero';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -12,9 +13,37 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const postUrl = new URL(`/blog/${post.id}`, Astro.site);
+const ogImageUrl = new URL('/og-image.png', Astro.site);
+const isoDate = post.data.date.toISOString();
+
+const blogPostingLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: isoDate,
+  dateModified: isoDate,
+  url: postUrl,
+  mainEntityOfPage: postUrl,
+  image: ogImageUrl,
+  keywords: post.data.tags.join(', '),
+  author: {
+    '@type': 'Person',
+    name: hero.name,
+    url: 'https://edengelking.com',
+  },
+};
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} noindex>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  jsonLd={[blogPostingLd]}
+  ogType="article"
+  publishedTime={isoDate}
+>
   <article class="post">
     <div class="container">
       <a class="mono back-link" href="/blog">← Blog</a>
@@ -24,7 +53,7 @@ const { Content } = await render(post);
         <Content />
       </div>
       <div class="post-tags">
-        {post.data.tags.map((tag) => <span class="mono">{tag}</span>)}
+        {post.data.tags.map((tag) => <a class="mono" href={`/blog?q=${encodeURIComponent(tag)}`}>{tag}</a>)}
       </div>
     </div>
   </article>
@@ -63,11 +92,16 @@ const { Content } = await render(post);
     margin-top: var(--space-5);
   }
 
-  .post-tags span {
+  .post-tags a {
     font-size: var(--text-xs);
     color: var(--color-signal);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 2px 8px;
+  }
+
+  .post-tags a:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-accent);
   }
 </style>
