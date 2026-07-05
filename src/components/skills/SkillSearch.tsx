@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { skills } from '../../data/skills';
+import { matchesAllTerms, parseSearchTerms } from '../../utils/searchQuery';
 
 const categoryCounts = (() => {
   const map = new Map<string, number>();
@@ -14,15 +15,10 @@ export function SkillSearch() {
   const [activeCategories, setActiveCategories] = useState<Set<string>>(() => new Set());
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const terms = parseSearchTerms(query);
     return skills.filter((s) => {
       if (activeCategories.size > 0 && !activeCategories.has(s.category)) return false;
-      if (!q) return true;
-      return (
-        s.name.toLowerCase().includes(q) ||
-        s.category.toLowerCase().includes(q) ||
-        s.tags.some((tag) => tag.includes(q))
-      );
+      return matchesAllTerms(`${s.name} ${s.category} ${s.tags.join(' ')}`, terms);
     });
   }, [query, activeCategories]);
 

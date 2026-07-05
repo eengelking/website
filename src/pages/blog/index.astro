@@ -1,30 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PostList } from '../../components/posts/PostList';
+import { blogIntro } from '../../data/pageIntros';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+const items = posts.map((post) => ({
+  slug: post.id,
+  title: post.data.title,
+  description: post.data.description,
+  dateLabel: post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+  tags: post.data.tags,
+  href: `/blog/${post.id}`,
+}));
 ---
 
-<BaseLayout title="Blog" description="Notes on infrastructure, architecture, and building things that hold up." noindex>
+<BaseLayout title="Blog" description="Notes on infrastructure, architecture, and building things that hold up.">
   <section class="blog-header">
     <div class="container">
       <p class="eyebrow">blog</p>
       <h1>Notes from the field</h1>
+      <p class="page-intro">{blogIntro}</p>
     </div>
   </section>
 
   <section class="blog-list">
     <div class="container">
-      {posts.map((post) => (
-        <a class="post-row" href={`/blog/${post.id}`}>
-          <span class="post-date mono">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-          <span class="post-title">{post.data.title}</span>
-          <span class="post-desc">{post.data.description}</span>
-        </a>
-      ))}
-      {posts.length === 0 && <p class="empty">No posts yet — check back soon.</p>}
+      <PostList
+        client:load
+        items={items}
+        emptyLabel="No posts yet — check back soon."
+        searchPlaceholder={'Type to search posts — try "kubectl" or "meta"'}
+      />
     </div>
   </section>
 </BaseLayout>
@@ -34,48 +44,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
     padding: var(--space-6) 0 var(--space-4);
   }
 
-  .post-row {
-    display: grid;
-    grid-template-columns: 10rem 1fr;
-    gap: var(--space-3);
-    padding: var(--space-3) 0;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text);
-  }
-
-  .post-row:hover .post-title {
-    color: var(--color-accent);
-  }
-
-  .post-date {
+  .page-intro {
+    max-width: 55ch;
     color: var(--color-text-muted);
-    font-size: var(--text-sm);
-  }
-
-  .post-title {
-    display: block;
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-  }
-
-  .post-desc {
-    display: block;
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    grid-column: 2;
-  }
-
-  .empty {
-    color: var(--color-text-muted);
-    padding: var(--space-4) 0;
-  }
-
-  @media (max-width: 640px) {
-    .post-row {
-      grid-template-columns: 1fr;
-    }
-    .post-desc {
-      grid-column: 1;
-    }
+    margin-top: var(--space-2);
   }
 </style>
