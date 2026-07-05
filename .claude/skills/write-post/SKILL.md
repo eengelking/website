@@ -20,7 +20,7 @@ Then ask whatever subset of these actually needs answering — skip ones the bul
 - Who is this for — other engineers, a general audience, future-Ed?
 - Roughly how long? A quick note (like `hello-world.md`) or something with real depth?
 - Any companies, systems, incidents, or people that can be named, and anything that's off-limits?
-- Is there a natural opening — a story, a specific moment — or should it lead with the idea directly?
+- Is there a natural opening — a story, a specific moment? (Narrative incident posts should open on the hook, not a stated thesis — see Step 4's "tell them" note. "Lead with the idea directly" is only a live option for explainer-format pieces.)
 
 Only move to drafting once you have a real angle, not just a topic.
 
@@ -55,6 +55,12 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 - **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
 - Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
 - **Use bullets for enumerable content** — a list of failure causes, a set of discrete lessons learned, concrete steps taken — instead of burying it in a run-on sentence. It reads easier and the items stand out. But don't bullet a closing/"moral of the story" paragraph that's meant to land as one continuous thought building to a final line; breaking that up kills the payoff. When in doubt, ask whether the sentence is a list of separate things or a single idea building momentum, and only bullet the former.
+- **Use `##` headers, but only when the piece has genuinely distinct topics, not just narrative beats.** A single-incident story (setup, complication, resolution, payoff line) should stay as flowing prose with no headers, like `earning-the-server-room.md` or `the-race-condition-that-ate-a-key.md` — chopping a one-story arc into sections fights the same momentum-building quality that already rules out bulleting a closing paragraph. Reach for headers on multi-part technical/architecture pieces where the content actually splits into separate subjects (e.g. the problem, how a specific mechanism works, how it's wired together, why it holds up) — see `the-key-that-never-touched-the-disk.md`. If you're not sure which kind of piece it is, ask: is this one continuous story, or several distinct things worth naming separately? Only header the latter.
+
+- **Every post should "tell them, tell them, tell them what you told them," but what that looks like depends on format:**
+  - **Narrative posts**: the opening hook *is* the "tell them what you're going to tell them" — it sets up the kind of problem this is without stating a thesis. Never add an explicit "in this post I'll cover..." sentence; that's a formulaic tell, not a hook.
+  - **Explainer posts** (the ones that earn headers per the rule above): an explicit short preview paragraph before the first header is expected, not incidental — see the "so the key had to be generated once..." paragraph before `## The shape of it` in `the-key-that-never-touched-the-disk.md`.
+  - **Every post, regardless of format**, needs the "tell them what you told them" close: a payoff line or short reflection that ties back to the opening problem (a closing bullet list of lessons, or a single landing line like the ending of `earning-the-server-room.md`). Keep it in Ed's voice, never a labeled "Conclusion" section.
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
