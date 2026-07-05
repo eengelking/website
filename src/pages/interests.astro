@@ -1,29 +1,58 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { PostList } from '../components/posts/PostList';
+import { interestsIntro } from '../data/pageIntros';
 
-const entries = (await getCollection('interests')).sort(
+const entries = (await getCollection('interests', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+const items = entries.map((entry) => ({
+  slug: entry.id,
+  title: entry.data.title,
+  description: entry.data.description,
+  dateLabel: entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' }),
+  tags: entry.data.tags,
+  href: `/interests/${entry.id}`,
+}));
+
+const interestsListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: entries.map((entry, i) => ({
+    '@type': 'CreativeWork',
+    position: i + 1,
+    name: entry.data.title,
+    description: entry.data.description,
+    dateCreated: entry.data.date.toISOString(),
+    keywords: entry.data.tags.join(', '),
+    url: new URL(`/interests/${entry.id}`, Astro.site),
+  })),
+};
 ---
 
-<BaseLayout title="Interests" description="A few things Ed Engelking spends time on outside of work." noindex>
+<BaseLayout
+  title="Interests"
+  description="A few things Ed Engelking spends time on outside of work."
+  jsonLd={[interestsListLd]}
+>
   <section class="interests-header">
     <div class="container">
       <p class="eyebrow">interests</p>
       <h1>Outside of work</h1>
+      <p class="page-intro">{interestsIntro}</p>
     </div>
   </section>
 
   <section class="interests-list">
     <div class="container">
-      {entries.map((entry) => (
-        <article class="interest-entry">
-          <h2>{entry.data.title}</h2>
-          <p class="entry-date mono">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
-          <p>{entry.data.description}</p>
-        </article>
-      ))}
+      <PostList
+        client:load
+        items={items}
+        emptyLabel="Nothing here yet — check back soon."
+        searchPlaceholder={'Type to search — try "germany" or "personal"'}
+      />
     </div>
   </section>
 </BaseLayout>
@@ -33,14 +62,9 @@ const entries = (await getCollection('interests')).sort(
     padding: var(--space-6) 0 var(--space-4);
   }
 
-  .interest-entry {
-    border-top: 1px solid var(--color-border);
-    padding: var(--space-4) 0;
-  }
-
-  .entry-date {
-    font-size: var(--text-xs);
+  .page-intro {
+    max-width: 55ch;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-2);
+    margin-top: var(--space-2);
   }
 </style>

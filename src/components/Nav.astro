@@ -4,15 +4,17 @@ import { contact } from '../data/contact';
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Skills', href: '/skills' },
-  { label: 'Blog', href: '/blog', hidden: true },
-  { label: 'Interests', href: '/interests', hidden: true },
+  { label: 'Blog', href: '/blog' },
 ];
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">Ed Engelking<span class="brand-cursor mono" aria-hidden="true">_</span></a>
+    <a class="brand mono" href="/">
+      <span class="prompt-symbol" aria-hidden="true">$</span>
+      <span class="typed-text">Ed Engelking</span><span class="brand-cursor" aria-hidden="true">_</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="nav-toggle">
       <span></span><span></span><span></span>
     </button>
@@ -28,6 +30,9 @@ const currentPath = Astro.url.pathname;
         })}
         <li>
           <a href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </li>
+        <li>
+          <a href={contact.githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </li>
       </ul>
     </nav>
@@ -52,15 +57,55 @@ const currentPath = Astro.url.pathname;
   }
 
   .brand {
-    font-family: var(--font-display);
+    display: inline-flex;
+    align-items: baseline;
     font-size: var(--text-base);
     color: var(--color-text);
     font-weight: 600;
     letter-spacing: -0.01em;
   }
 
+  .prompt-symbol {
+    color: var(--color-tag);
+    font-weight: 700;
+    margin-right: 0.4em;
+  }
+
+  .typed-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 12ch;
+    animation: brand-typing 1.1s steps(12, end);
+  }
+
   .brand-cursor {
     color: var(--color-accent);
+    animation: brand-blink 1s step-end infinite;
+    animation-delay: 1.1s;
+  }
+
+  @keyframes brand-typing {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes brand-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .typed-text {
+      animation: none;
+      width: auto;
+    }
+
+    .brand-cursor {
+      animation: none;
+    }
   }
 
   nav ul {
