@@ -22,6 +22,7 @@ Then ask whatever subset of these actually needs answering — skip ones the bul
 - Any companies, systems, incidents, or people that can be named, and anything that's off-limits?
 - Is there a natural opening — a story, a specific moment? (Narrative incident posts should open on the hook, not a stated thesis — see Step 4's "tell them" note. "Lead with the idea directly" is only a live option for explainer-format pieces.)
 - Does he want this one held back as a draft instead of going live once it's finished (e.g. timing, still needs review, sensitive topic)? Default assumption is it publishes when done, so only worth asking if something about the topic or timing makes that not obviously true. If he's not sure yet, fall back to the stopping-point ask in Step 5.
+- If the topic centers on a UI, a tool's output, or data that's genuinely hard to describe in prose (a dashboard, a diff, a before/after), ask whether he has a screenshot for it rather than assuming words alone will carry it. Tell him he can paste the image directly into the Claude Code chat, or if he'd rather save it himself first, give him the target path (`public/images/{blog,interests}/<descriptive-slug>.png`) so it's just waiting there when drafting starts.
 
 Only move to drafting once you have a real angle, not just a topic.
 
@@ -55,6 +56,7 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 - **No stock transitions** ("moreover," "furthermore," "in today's world," "at the end of the day").
 - **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
 - Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
+- **On a complex or technical topic, succinctness is part of telling the story well, not a tax on it.** The instinct on a dense subject is to over-explain: restate the same point from three angles so it's sure to land, or walk through every supporting detail before making the point it supports. Resist it. Say the point once, clearly, with the one example or number that makes it concrete, and move on. If a paragraph and the one after it are making the same claim in different words, cut one. A reader trusts a piece more, not less, when it says a hard thing in a few plain sentences instead of hedging it across a page.
 - **Use bullets for enumerable content** — a list of failure causes, a set of discrete lessons learned, concrete steps taken — instead of burying it in a run-on sentence. It reads easier and the items stand out. But don't bullet a closing/"moral of the story" paragraph that's meant to land as one continuous thought building to a final line; breaking that up kills the payoff. When in doubt, ask whether the sentence is a list of separate things or a single idea building momentum, and only bullet the former.
 - **Use `##` headers, but only when the piece has genuinely distinct topics, not just narrative beats.** A single-incident story (setup, complication, resolution, payoff line) should stay as flowing prose with no headers, like `earning-the-server-room.md` or `the-race-condition-that-ate-a-key.md` — chopping a one-story arc into sections fights the same momentum-building quality that already rules out bulleting a closing paragraph. Reach for headers on multi-part technical/architecture pieces where the content actually splits into separate subjects (e.g. the problem, how a specific mechanism works, how it's wired together, why it holds up) — see `the-key-that-never-touched-the-disk.md`. If you're not sure which kind of piece it is, ask: is this one continuous story, or several distinct things worth naming separately? Only header the latter.
 
@@ -65,6 +67,33 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
+### Hooks that earn attention
+
+A post competes for attention from two directions at once: a reader who doesn't know the subject and will bounce if the opening reads dry or academic, and a reader who thinks they already know the subject and will bounce even faster if the opening reads like a 101 recap. Neither one is won with an abstract thesis statement ("this post explains why X matters"). Open on the single most concrete, surprising thing in the piece instead: a specific number that moves in a direction nobody expects, a moment, a contrast that shouldn't be possible but is. If the piece has a real "wait, what?" fact buried in paragraph four, that fact (or a compressed version of it) belongs in sentence one, not paragraph four. The rest of the hook paragraph should earn the "why" in one or two more sentences, then get out of the way.
+
+This matters most on explainer posts about a topic that has an expert audience and a novice audience overlapping, which is common for the technical/security-adjacent side of the blog. Write the hook so an expert can't dismiss it as "I know what this is" at a glance, because it's stated as a specific claim or scenario, not a topic label.
+
+### TL;DR callouts for complex explainer posts
+
+For a post that's genuinely dense (several distinct technical ideas stacked on each other, jargon that needs unpacking, a worked example with numbers), add a TL;DR callout immediately after the hook paragraph, before any section headers. It exists so a skimmer gets the payoff before deciding whether to commit to the rest, and so the piece doesn't have to over-explain itself in the body to compensate for a reader who left after two paragraphs.
+
+Don't reach for one on a short post, a narrative/incident post, or anything where the whole piece is already shorter than a TL;DR would be. It's a tool for length and density, not a default block to bolt onto every post.
+
+Keep it to two or three bullets, each one a complete, specific claim (not a topic label): the surprising thing the post is actually about, what any tool/mechanism involved does in one sentence, and the concrete proof point (a real number, example, or outcome) if there is one. Write it in raw HTML, not markdown bullet syntax, since markdown list syntax nested inside a raw HTML block isn't reliably parsed by this site's content pipeline:
+
+```html
+<div class="tldr">
+  <p class="tldr-label">TL;DR</p>
+  <ul>
+    <li>The surprising claim, stated as a specific fact, not a topic label.</li>
+    <li>What the tool/mechanism does, in one sentence.</li>
+    <li>The concrete proof point: a real number or outcome from the example below.</li>
+  </ul>
+</div>
+```
+
+This depends on `.tldr` / `.tldr-label` CSS existing in the target page's `<style>` block (`src/pages/blog/[slug].astro` or `src/pages/interests/[slug].astro`). Check the target file for those classes before using this pattern; if they're missing (the two detail pages aren't guaranteed to stay in sync), port the rule block over from whichever page already has it rather than writing a new variant, so both collections render TL;DRs identically.
+
 ## Step 5: Draft the file
 
 - Filename: `src/content/{blog,interests}/<kebab-case-slug>.md`, slug derived from the title (reuse the branch's topic slug if it still fits, but the file slug should match the title, not necessarily the branch name verbatim).
@@ -74,6 +103,16 @@ If you're not sure whether a line sounds like Ed or sounds like a chatbot, read 
 - Write `description` as real ad copy (it becomes the page's meta description and social preview text), not a restatement of the title.
 - Before finalizing, check the draft doesn't contain anything on the denylist in `scripts/check-sensitive.sh` (currently Ed's personal email and compensation figures) — if the topic naturally brushes up against either, flag it to Ed rather than silently omitting.
 - **Verify factual claims yourself before showing Ed the draft, don't wait for him to catch them.** Any external, checkable claim (a named CVE/CWE/vendor and what it actually is, a date something was deprecated/released/changed, a version number, a named tool's actual behavior) needs to be confirmed with a real fetch (WebSearch/WebFetch to a primary source, e.g. the vendor's own page, not just recalled from training data) before it goes in front of Ed, not after. If something can't be verified or turns out to conflict with what was drafted, fix it or flag it to Ed rather than presenting it as settled. This applies to every draft and every subsequent revision that adds a new factual claim, not just the first pass.
+- **Embedding screenshots**: if Ed pasted an image into the chat, or pointed you at one saved under `public/images/{blog,interests}/`, embed it with a raw `<figure>`/`<img>`/`<figcaption>` block, not a bare markdown `![]()` (markdown images don't get a caption slot):
+  ```html
+  <figure>
+    <img src="/images/blog/<descriptive-slug>.png" alt="<what's literally in the image, specific enough to stand in for it>" />
+    <figcaption>A sentence of commentary on what the image shows, not a restatement of the alt text.</figcaption>
+  </figure>
+  ```
+  This depends on `figure`/`figure img`/`figcaption` CSS existing in the target page's `<style>` block, same caveat as the TL;DR block above: check `src/pages/blog/[slug].astro` and `src/pages/interests/[slug].astro` both have it, and port the rule block over if one is missing it. Confirm `src/styles/global.css` still has a global `img { max-width: 100%; height: auto; }` reset before publishing screenshots — without it, an image wider than its column (common for tall UI screenshots) can overflow the page instead of scaling down, especially on mobile. If Ed's screenshot is a tall, narrow UI panel rather than a wide diagram, don't let it render at native pixel size; check the figure's rendered width looks proportionate next to the body text rather than dominating the page.
+  Once images are in a post, don't sign off on the layout from reading markdown alone. Start the dev server, and if a real browser isn't available to check in, drive a headless one (`npx playwright install chromium` the first time if it's not already cached, then a short script with `page.screenshot({ fullPage: true })`) at both a desktop and a mobile viewport width, and look at the rendered output before calling the post done.
+- **Writing the caption**: `alt` and `figcaption` do different jobs and shouldn't say the same thing. `alt` is a literal, complete description of what's in the image, for someone who can't see it. `figcaption` is visible commentary sitting right under the image, for someone who *can*, so it should add something the image alone doesn't: what to notice, why it's the interesting part, or a callback to the number/claim in the surrounding prose (see the "two pushed higher, two pushed lower" pattern, a caption that interprets the picture rather than narrating it). Keep it to one sentence, same voice rules as the rest of the post (no em-dashes, no throat-clearing "This screenshot shows..."), and never leave it as a copy of the alt text with the punctuation changed.
 
 Write the file directly into the repo once drafted. Then show Ed the rendered result and ask what he'd change — treat the first pass as a draft to react to, not a final answer.
 
