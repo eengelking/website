@@ -73,13 +73,15 @@ A post competes for attention from two directions at once: a reader who doesn't 
 
 This matters most on explainer posts about a topic that has an expert audience and a novice audience overlapping, which is common for the technical/security-adjacent side of the blog. Write the hook so an expert can't dismiss it as "I know what this is" at a glance, because it's stated as a specific claim or scenario, not a topic label.
 
-### TL;DR callouts for complex explainer posts
+### TL;DR callouts
 
-For a post that's genuinely dense (several distinct technical ideas stacked on each other, jargon that needs unpacking, a worked example with numbers), add a TL;DR callout immediately after the hook paragraph, before any section headers. It exists so a skimmer gets the payoff before deciding whether to commit to the rest, and so the piece doesn't have to over-explain itself in the body to compensate for a reader who left after two paragraphs.
+A TL;DR is a judgment call for any post, not a block reserved for dense technical explainers. The clearest case is a post that's genuinely dense (several distinct technical ideas stacked on each other, jargon that needs unpacking, a worked example with numbers): add it immediately after the hook paragraph, before any section headers, so a skimmer gets the payoff before deciding whether to commit to the rest. But a narrative post can earn one too, when compressing the premise and stakes up front gives a reader a reason to stay without flattening the story, see the note below on not spoiling the ending.
 
-Don't reach for one on a short post, a narrative/incident post, or anything where the whole piece is already shorter than a TL;DR would be. It's a tool for length and density, not a default block to bolt onto every post.
+Don't reach for one on a short post or anything where the whole piece is already shorter than a TL;DR would be. It's a tool for giving a reader a reason to invest attention, not a default block to bolt onto every post regardless of length.
 
-Keep it to two or three bullets, each one a complete, specific claim (not a topic label): the surprising thing the post is actually about, what any tool/mechanism involved does in one sentence, and the concrete proof point (a real number, example, or outcome) if there is one. Write it in raw HTML, not markdown bullet syntax, since markdown list syntax nested inside a raw HTML block isn't reliably parsed by this site's content pipeline:
+**On a narrative post**, write the TL;DR to cover the setup and the stakes, not the payoff. The whole point of a narrative close is that the final line lands because the reader arrived at it through the story, and a TL;DR that gives away that line before the story starts kills the one thing narrative format is for. Summarize the situation and what was at stake, stop before the turn or the ending beat.
+
+Keep it to two or three bullets, each one a complete, specific claim (not a topic label): on an explainer post, the surprising thing the post is actually about, what any tool/mechanism involved does in one sentence, and the concrete proof point (a real number, example, or outcome) if there is one; on a narrative post, the situation, what made it hard, and what was actually at stake, without the resolution. Write it in raw HTML, not markdown bullet syntax, since markdown list syntax nested inside a raw HTML block isn't reliably parsed by this site's content pipeline:
 
 ```html
 <div class="tldr">
