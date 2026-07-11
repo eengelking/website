@@ -49,6 +49,12 @@ a:hover {
   font-family: var(--font-mono);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
