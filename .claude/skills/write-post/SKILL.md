@@ -111,7 +111,11 @@ A TL;DR at the top and a prose "tell them what you told them" close (per the rul
 </div>
 ```
 
-Unlike the TL;DR, restating the post's own points here is the job, not a violation of the "don't repeat yourself" rule elsewhere in this skill, since this callout is explicitly the recap, read by someone who wants confirmation of what they just read or is jumping straight to the end. Same scope rule as the TL;DR: only on genuinely dense, multi-section explainer posts, never on a short post or a narrative/incident piece where a bullet recap would kill the payoff line's landing. Uses the same `.summary` / `.summary-label` CSS pair (styled identically to `.tldr`, just a distinct class so the two can be styled apart later if that's ever wanted), with the same cross-page sync check as the TL;DR block above.
+Unlike the TL;DR, restating the post's own points here is the job, not a violation of the "don't repeat yourself" rule elsewhere in this skill, since this callout is explicitly the recap, read by someone who wants confirmation of what they just read or is jumping straight to the end. Default scope: dense, multi-section explainer posts. Don't add a *new* Key Takeaways box to a narrative post that closes on a single landing line, a bullet recap right after that line kills the moment it's supposed to leave the reader in.
+
+**Exception**: if a narrative post already closes with its own bullet list of lessons (the format this skill explicitly allows for a narrative "tell them what you told them" close), that list is already the recap, just not styled as one yet. Wrap it in the `.summary` markup rather than leaving it as plain markdown bullets, so it reads consistently with every other post's closing recap. This isn't adding a new element that could undercut a landing line, it's re-skinning one that was already the close. In this case the two-or-three-bullet guideline is a default, not a cap: keep whatever count the existing list actually has rather than cutting real lessons to hit a number. Drop whatever lead-in sentence used to introduce the list ("a few things stuck with me from this one," "some lessons from this one") once it's wrapped, the `summary-label` now does that job, and the sentence and the label saying the same thing back to back reads as a stutter.
+
+Uses the same `.summary` / `.summary-label` CSS pair (styled identically to `.tldr`, just a distinct class so the two can be styled apart later if that's ever wanted), with the same cross-page sync check as the TL;DR block above.
 
 ## Step 5: Draft the file
 
