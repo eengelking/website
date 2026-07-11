@@ -6,9 +6,16 @@ tags: ["infrastructure", "kubernetes", "gitlab-ci", "k3d", "cypress", "ci-cd"]
 draft: false
 ---
 
-Developers testing against something that doesn't look like production is one of the oldest sources of "it worked on my machine." A shared dev environment drifts out of sync with prod configuration over time, and a laptop running Docker Compose never really behaves like a Kubernetes cluster. Bugs that only show up under real orchestration, real networking, real config, don't show up until it's too late to catch them cheaply.
+Push a commit and within minutes there's a real Kubernetes cluster running your change, built from the exact same Helm charts as production, torn down again the moment the pipeline finishes. Not a mock, not Docker Compose pretending to be Kubernetes, an actual cluster spun up inside a GitLab runner and gone before most people would even notice it existed. I built the pipeline that did this, because "it worked on my machine" is one of the oldest lies in software, and it's almost always caused by developers testing against something that doesn't actually resemble production.
 
-I built a pipeline that closed that gap by giving every commit its own real, disposable environment. Push code, and within minutes you'd have an actual running Kubernetes cluster, built from the same infrastructure-as-code and Helm charts as production, with your change deployed into it and tested against it, gone again once the pipeline finished.
+<div class="tldr">
+  <p class="tldr-label">TL;DR</p>
+  <ul>
+    <li>Every commit got its own disposable Kubernetes cluster, deployed with the same Helm charts as production, then torn down once the pipeline finished.</li>
+    <li>The pipeline earned the right to spin up that expensive infrastructure: unit and integration tests had to pass first, before it would even build the container image.</li>
+    <li>The infrastructure wasn't what made this trustworthy. Real end-to-end tests against the live cluster were, and that part stayed on the developer no matter how good the environment was.</li>
+  </ul>
+</div>
 
 ## What ran before anything got deployed
 
@@ -29,3 +36,12 @@ That's also the part of this that only worked because of a rule on the developer
 Every commit or push kicked the whole thing off automatically, and a developer had a live, tested, production-shaped environment to look at within minutes of hitting push, not at the end of a sprint, not after asking someone to provision something by hand.
 
 The infrastructure side of this was the part that got the attention, spinning up a real cluster inside a CI runner isn't something every team gets to see running in minutes. But the part that actually made it trustworthy was quieter: none of this replaces a developer knowing what their feature is supposed to do and proving it with a real test. Fast, production-like infrastructure just meant that proof happened minutes after a commit instead of days after a deploy.
+
+<div class="summary">
+  <p class="summary-label">Key Takeaways</p>
+  <ul>
+    <li>Same Helm charts, same manifests, same shape of infrastructure as production, so a passing test here meant something a Docker Compose approximation never could.</li>
+    <li>Cheap code checks ran before expensive infrastructure ever spun up, unit and integration tests had to pass before a cluster was worth the cost of building.</li>
+    <li>Fast infrastructure only proves what the tests running against it actually check. A perfect replica of production with a shallow test still proves nothing.</li>
+  </ul>
+</div>
