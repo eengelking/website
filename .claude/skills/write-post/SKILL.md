@@ -94,6 +94,23 @@ Keep it to two or three bullets, each one a complete, specific claim (not a topi
 
 This depends on `.tldr` / `.tldr-label` CSS existing in the target page's `<style>` block (`src/pages/blog/[slug].astro` or `src/pages/interests/[slug].astro`). Check the target file for those classes before using this pattern; if they're missing (the two detail pages aren't guaranteed to stay in sync), port the rule block over from whichever page already has it rather than writing a new variant, so both collections render TL;DRs identically.
 
+### Key Takeaways callouts, the bookend to a TL;DR
+
+A TL;DR at the top and a prose "tell them what you told them" close (per the rule above) do different jobs, and on the same class of dense post that earns a TL;DR, they're often not enough on their own: the prose close is Ed's voice landing a final thought, not a scannable recap, and a reader who skimmed the middle has nothing to check their understanding against. For posts dense enough to have a TL;DR, add a matching **Key Takeaways** callout at the very end, after the closing prose, not instead of it:
+
+```html
+<div class="summary">
+  <p class="summary-label">Key Takeaways</p>
+  <ul>
+    <li>Restate the core claim from the TL;DR, now proven by the example instead of just asserted.</li>
+    <li>The specific mechanism or number that made the case.</li>
+    <li>What a reader should actually do differently now.</li>
+  </ul>
+</div>
+```
+
+Unlike the TL;DR, restating the post's own points here is the job, not a violation of the "don't repeat yourself" rule elsewhere in this skill, since this callout is explicitly the recap, read by someone who wants confirmation of what they just read or is jumping straight to the end. Same scope rule as the TL;DR: only on genuinely dense, multi-section explainer posts, never on a short post or a narrative/incident piece where a bullet recap would kill the payoff line's landing. Uses the same `.summary` / `.summary-label` CSS pair (styled identically to `.tldr`, just a distinct class so the two can be styled apart later if that's ever wanted), with the same cross-page sync check as the TL;DR block above.
+
 ## Step 5: Draft the file
 
 - Filename: `src/content/{blog,interests}/<kebab-case-slug>.md`, slug derived from the title (reuse the branch's topic slug if it still fits, but the file slug should match the title, not necessarily the branch name verbatim).
