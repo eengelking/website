@@ -1,5 +1,7 @@
 ---
 import { projects } from '../../data/projects';
+
+const sortedProjects = [...projects].sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <section class="projects">
@@ -7,7 +9,7 @@ import { projects } from '../../data/projects';
     <p class="eyebrow">projects</p>
     <h2>Things I've built on the side</h2>
     <div class="project-grid">
-      {projects.map((project) => (
+      {sortedProjects.map((project) => (
         <article class="project-card">
           <h3>{project.name}</h3>
           <p>{project.description}</p>
