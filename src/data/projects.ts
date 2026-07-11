@@ -34,6 +34,13 @@ export const projects: Project[] = [
     link: 'https://github.com/eengelking/cpu-monitor',
   },
   {
+    name: 'localscore',
+    description:
+      'A self-hosted tool that turns a raw CVSS base score into the score that actually applies to a specific system. A short plain-English interview about reachability, auth, data sensitivity, and blast radius per "location" reshapes any pasted CVSS vector or CVE lookup into a context-aware environmental score.',
+    technologies: ['TypeScript', 'Hono', 'React', 'SQLite', 'Docker'],
+    link: 'https://github.com/eengelking/localscore',
+  },
+  {
     name: 'LookSharp',
     description:
       'An iPad app for managing sheet music. Tilt your head to turn the page instead of taking your hands off the instrument, hence the name.',
