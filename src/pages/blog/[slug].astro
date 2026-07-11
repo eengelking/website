@@ -95,7 +95,8 @@ const blogPostingLd = {
     margin-bottom: var(--space-3);
   }
 
-  .post-body :global(.tldr) {
+  .post-body :global(.tldr),
+  .post-body :global(.summary) {
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-accent);
     background: var(--color-surface);
@@ -104,7 +105,8 @@ const blogPostingLd = {
     margin: var(--space-4) 0;
   }
 
-  .post-body :global(.tldr-label) {
+  .post-body :global(.tldr-label),
+  .post-body :global(.summary-label) {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.08em;
@@ -113,16 +115,19 @@ const blogPostingLd = {
     margin: 0 0 var(--space-2);
   }
 
-  .post-body :global(.tldr ul) {
+  .post-body :global(.tldr ul),
+  .post-body :global(.summary ul) {
     margin: 0;
     padding-left: 1.2em;
   }
 
-  .post-body :global(.tldr li) {
+  .post-body :global(.tldr li),
+  .post-body :global(.summary li) {
     margin-bottom: var(--space-2);
   }
 
-  .post-body :global(.tldr li:last-child) {
+  .post-body :global(.tldr li:last-child),
+  .post-body :global(.summary li:last-child) {
     margin-bottom: 0;
   }
 

@@ -6,9 +6,16 @@ tags: ["infrastructure", "encryption", "linux", "provisioning", "nbde", "tang", 
 draft: false
 ---
 
-I was brought in to get a customer's remote machines booting from an image over HTTPS. That part was straightforward: iPXE, pull the image, go. The complication showed up once I read further into the requirements: every one of those machines needed a fully encrypted disk, and the encryption key couldn't live in the image or on the machine itself.
+A customer needed remote machines to netboot a fully encrypted disk, with the encryption key living nowhere the machine could keep it. Not on the disk, since storing the key there defeats the point of encrypting it. Not in the boot image either, since every machine sharing that image would share the same key, and one compromised unit would compromise all of them. The key had to exist somewhere the machine could reach on every boot, but never somewhere it could hold onto.
 
-That second part is what made it hard. Store the key on disk and you've defeated the point of encrypting the disk. Bake it into the image and every machine that boots from that image shares the same key, so one compromised unit compromises all of them. The key had to exist somewhere the machine could reach, but never somewhere the machine could keep.
+<div class="tldr">
+  <p class="tldr-label">TL;DR</p>
+  <ul>
+    <li>The constraint: a disk's encryption key can't live on the disk, in the boot image, or anywhere on the machine, yet the machine still needs it on every single boot.</li>
+    <li>NBDE (LUKS plus Tang plus Clevis) solves this: Tang helps a machine reconstruct its key over the network without Tang ever holding a copy of it, so compromising Tang exposes nothing.</li>
+    <li>The machine finds Tang for free by piggybacking its address on the DHCP handshake every machine already makes to get an IP, no separate bootstrapping protocol needed.</li>
+  </ul>
+</div>
 
 The requirement broke down into two cases:
 
@@ -53,3 +60,12 @@ Nothing about a machine's own storage was ever worth stealing. The LUKS header h
 The trust model wasn't per-machine identity checked at unlock time, Tang doesn't do that. It was reachability: only machines on the segmented provisioning network, with a MAC address Kea already knew about, could get far enough to ask Tang anything in the first place. Take a machine off that network and its disk is just encrypted data with no path back to the key.
 
 Reusing DHCP as the discovery mechanism is still the part I'm proudest of. It meant no extra bootstrapping protocol and no chicken-and-egg problem of needing configuration to fetch configuration. The machine was already going to ask the network "where am I and what's around me" as the very first thing it did. Answering "and also, here's where Tang is" cost nothing extra.
+
+<div class="summary">
+  <p class="summary-label">Key Takeaways</p>
+  <ul>
+    <li>The LUKS header holds a binding, not a key. It's inert without a live exchange against Tang, so there's nothing on the disk worth stealing.</li>
+    <li>Trust here is reachability, not identity. Only a machine on the segmented network with a known MAC can even ask Tang anything.</li>
+    <li>Piggybacking Tang's address on DHCP avoided a bootstrapping problem entirely: no new protocol was needed to find the thing that unlocks the disk.</li>
+  </ul>
+</div>

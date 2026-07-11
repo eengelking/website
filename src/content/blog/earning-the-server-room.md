@@ -8,6 +8,15 @@ draft: false
 
 Years ago I took over an IT department that had a real problem, and it wasn't technical. My manager pulled me aside early on and told me straight out that the previous IT management had burned every bridge with the rest of engineering. Backstabbing, blame-shifting, the works. He didn't think it was fixable. He wasn't wrong to be worried. When I tried to talk to the other engineers, most of them wanted nothing to do with me. A response, if I got one at all, was a grunt.
 
+<div class="tldr">
+  <p class="tldr-label">TL;DR</p>
+  <ul>
+    <li>Inherited an IT department with a real problem, and it wasn't technical: the previous management had burned every bridge with engineering, and nobody wanted to talk to me.</li>
+    <li>The infrastructure matched the reputation. Nothing centralized, nothing physically secure, and the room IT already owned for it had sat abandoned for years, packed floor to ceiling with junk.</li>
+    <li>I decided talking my way past it wasn't going to work. The only thing left to try was doing the work nobody asked me to do, and seeing who noticed.</li>
+  </ul>
+</div>
+
 These were old-school guys. Union, hardened, and they'd clearly decided IT wasn't worth their time before I ever showed up. I could have tried to talk my way past that, explain that I was different, make promises. I decided the only thing that would actually land was shutting up and doing the work.
 
 The infrastructure I inherited matched the reputation. Nothing was centralized, none of it was physically secure, and it went down constantly. I knew what it needed: one real home for the equipment instead of whatever closet or desk it had been living under. It turned out IT already owned a room for exactly that, in the basement, abandoned by the previous regime years earlier. I opened the door and found it packed floor to ceiling, wall to wall, a twenty by thirty foot room with no walking space left in it.

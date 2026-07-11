@@ -8,6 +8,15 @@ draft: false
 
 Someone runs a vulnerability scanner, a finding comes back with a CVSS score of 10.0, and the room goes quiet. Ten out of ten. Critical. Patch everything, tonight, before someone gets in. I've watched that reaction play out more than once, and almost every time, the panic is based on a number nobody actually understands.
 
+<div class="tldr">
+  <p class="tldr-label">TL;DR</p>
+  <ul>
+    <li>A "10.0" is a base score: worst-case math about the vulnerability alone, not a verdict on your actual risk.</li>
+    <li>CVSS itself has changed shape twice (v2, v3.1, v4), and even two scorers using the same version can land on different numbers for the same CVE.</li>
+    <li>Before treating a critical finding as an emergency, ask three questions: does this system hold anything worth stealing, does integrity or availability here actually matter, and is there a known exploit in the wild.</li>
+  </ul>
+</div>
+
 That 10.0 is a `base score`. It's one input into a larger system, and by itself it tells you almost nothing about whether you're actually at risk.
 
 ## What the base score is actually measuring
@@ -54,12 +63,21 @@ If the honest answer to all three is "not really," the base score was never desc
 
 The scanner isn't wrong when it reports a 10. It just isn't finished telling you the story. The CVSS calculator is the part of that story almost nobody reads, and it's usually the part that tells you whether to lose sleep over a finding or close the ticket.
 
-CVSS is one piece of a much bigger vulnerability management picture, and I'll be covering more of it in future posts, including:
+<div class="summary">
+  <p class="summary-label">Key Takeaways</p>
+  <ul>
+    <li>The base score is one input, not a verdict. Environmental and threat metrics exist to tell you the rest of the story.</li>
+    <li>CVSS scoring has changed shape twice, and different scorers can produce different numbers for the same CVE even within one version.</li>
+    <li>A scary number on a system with nothing worth stealing and no known exploit in the wild isn't actually a scary finding.</li>
+  </ul>
+</div>
+
+CVSS is one piece of a much bigger vulnerability management picture. I picked apart what confidentiality, integrity, and availability actually mean in [the next post](/blog/the-cia-triad-is-why-severity-means-anything), and later ran into a case where environmental scoring pushes a low score up instead of down, in [Environmental Scores Don't Only Go Down](/blog/environmental-scores-can-go-up-not-just-down). Topics still on the list:
 
 - What a CVE actually is and why it's worth caring about beyond "it showed up in a scan"
 - What CWE is and how it relates to a CVE
 - Why CPEs matter for knowing which versions of a product are actually affected
-- What a vector is and how it differs across CVSS versions (probably the next one in this series)
+- What a vector is and how it differs across CVSS versions
 - Why NIST's NVD matters so much to software organizations worldwide, and the trouble NIST is currently having keeping up with it
 - What MITRE is and its role in the CVE process
 

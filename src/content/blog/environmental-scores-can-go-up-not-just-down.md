@@ -52,3 +52,12 @@ That's the trap in a single low score: it reads as "this system is fine" when it
 ## Don't let a low score be the whole story
 
 A base score only ever describes the vulnerability in a vacuum. Environmental scoring closes that gap, and it's easy to assume it only closes in one direction because it usually does. It doesn't have to. A dev environment that's quietly a shortcut into production, or a "small" box that's grown into where three critical services all live, won't be protected just because the base score printed a friendly number first. That's the gap localscore exists to make visible, one location and one honest answer at a time, instead of something a team finds out about after the fact.
+
+<div class="summary">
+  <p class="summary-label">Key Takeaways</p>
+  <ul>
+    <li>Environmental scoring can push a base score up, not just down, when a system is genuinely more exposed or more critical than the vulnerability assumed.</li>
+    <li>CVE-2026-12386 proved it: base score 3.9 LOW, but 5.9 MEDIUM on one environment and 4.5 MEDIUM on another, both because of how those environments are actually built.</li>
+    <li>A low base score only describes the vulnerability in isolation. Treat it as a green light and you've skipped the one question that actually mattered: what does this environment look like.</li>
+  </ul>
+</div>
