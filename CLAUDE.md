@@ -22,7 +22,7 @@ There is no test suite and no lint/typecheck script configured. TypeScript uses 
 - Commit as you go rather than batching everything into one commit at the end of the branch.
 - Open a PR with `gh pr create` once the work is ready for review. Because push-to-`main` is what triggers `.github/workflows/deploy.yml`, a merged PR goes live on the very next Actions run — there's no staging environment to catch problems first, so treat the sensitive-content check and a `npm run build` locally as a pre-PR gate, not an afterthought.
 - **Merging is Ed's call, not the agent's.** Never merge a PR, push further commits to `main`, or self-approve — open it and stop.
-- Only delete a branch after confirming its PR actually merged into `main`.
+- Only delete a branch after confirming its PR actually merged into `main` — and delete both copies: the local branch (`git branch -d`) and, since GitHub doesn't auto-delete on merge here, the remote one too (`git push origin --delete <branch>`). Deleting the remote branch is a shared-state change, so confirm with Ed before doing it, same as any other push.
 - **A merged PR closes out that unit of work — it doesn't authorize starting the next one unprompted.** Sync `main` and stop; wait for Ed to say what's next, unless he already specified a follow-on task in the same request.
 
 ## Architecture
