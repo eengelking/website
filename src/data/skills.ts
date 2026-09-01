@@ -13,6 +13,7 @@ export const skillCategories: SkillCategorySummary[] = [
   { category: 'AI & Machine Learning', depth: 4 },
   { category: 'Databases & Data Engineering', depth: 4 },
   { category: 'Systems, Networking & Virtualization', depth: 4 },
+  { category: 'UX/UI Design & Research', depth: 3 },
   { category: 'Early-Career Operations & Facilities', depth: 3 },
 ];
 
@@ -165,6 +166,14 @@ export const skills: SkillEntry[] = [
   { name: 'Technical Training Delivery (200+ personnel)', category: 'Business Strategy & Development', tags: ['training'] },
   { name: 'Conference Presentations & Technical Writing (SUSECon)', category: 'Business Strategy & Development', tags: ['conference', 'susecon', 'technical-writing'] },
   { name: 'Open Source Contributions (Rancher, HobbyFarm)', category: 'Business Strategy & Development', tags: ['open-source', 'rancher', 'hobbyfarm'] },
+
+  // UX/UI Design & Research
+  { name: 'UX/UI Design (End-to-End Screen & Workflow Ownership)', category: 'UX/UI Design & Research', tags: ['ux', 'ui', 'design'] },
+  { name: 'Figma (Wireframes, Mockups, Interactive Prototypes)', category: 'UX/UI Design & Research', tags: ['figma', 'prototyping'] },
+  { name: 'Design Systems & Component Libraries', category: 'UX/UI Design & Research', tags: ['design-systems', 'ui'] },
+  { name: 'Workflow Diagrams & Mindmaps', category: 'UX/UI Design & Research', tags: ['workflow-diagrams', 'mindmaps'] },
+  { name: 'User Research & Customer Interviews', category: 'UX/UI Design & Research', tags: ['user-research', 'interviews'] },
+  { name: 'Design-to-Implementation Delegation', category: 'UX/UI Design & Research', tags: ['design-ops', 'delegation'] },
 
   // Early-Career Operations & Facilities
   { name: 'Broadcast Automation (ENPS, iNews, Chyron, Vizrt, Master Control)', category: 'Early-Career Operations & Facilities', tags: ['broadcast', 'enps', 'inews', 'chyron', 'vizrt', 'master-control'] },
