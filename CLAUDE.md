@@ -15,6 +15,16 @@ Personal website for Ed Engelking II, built with Astro + React islands (Framer M
 
 There is no test suite and no lint/typecheck script configured. TypeScript uses `astro/tsconfigs/strict`; rely on editor/IDE diagnostics or `npx astro check` for type errors.
 
+## Git workflow
+
+- **Never commit directly to `main`.** Sync `main` (`git checkout main && git pull`) before branching — don't assume it's current.
+- **Branch per unit of work**, named `<topic>-YYYYMMDD` (e.g. `blog-revisions-20260710`, `add-localscore-project-20260710`) — this matches every branch in the repo's history, so keep following it rather than inventing a new convention.
+- Commit as you go rather than batching everything into one commit at the end of the branch.
+- Open a PR with `gh pr create` once the work is ready for review. Because push-to-`main` is what triggers `.github/workflows/deploy.yml`, a merged PR goes live on the very next Actions run — there's no staging environment to catch problems first, so treat the sensitive-content check and a `npm run build` locally as a pre-PR gate, not an afterthought.
+- **Merging is Ed's call, not the agent's.** Never merge a PR, push further commits to `main`, or self-approve — open it and stop.
+- Only delete a branch after confirming its PR actually merged into `main`.
+- **A merged PR closes out that unit of work — it doesn't authorize starting the next one unprompted.** Sync `main` and stop; wait for Ed to say what's next, unless he already specified a follow-on task in the same request.
+
 ## Architecture
 
 **Content model**: page copy lives in typed data modules under `src/data/` (`hero.ts`, `about.ts`, `achievements.ts`, `contact.ts`, `projects.ts`, `skills.ts`, `timeline.ts`), typed against shared interfaces in `src/types/content.ts`. Components import from `src/data/*` rather than hardcoding copy. When changing site copy, edit the data module, not the component markup.
