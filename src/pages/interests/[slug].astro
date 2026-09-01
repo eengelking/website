@@ -87,8 +87,48 @@ const blogPostingLd = {
     margin-top: var(--space-4);
   }
 
-  .post-body :global(p) {
+  .post-body :global(p),
+  .post-body :global(h2),
+  .post-body :global(h3),
+  .post-body :global(ul),
+  .post-body :global(ol) {
     margin-bottom: var(--space-3);
+  }
+
+  .post-body :global(.tldr),
+  .post-body :global(.summary) {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    margin: var(--space-4) 0;
+  }
+
+  .post-body :global(.tldr-label),
+  .post-body :global(.summary-label) {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .post-body :global(.tldr ul),
+  .post-body :global(.summary ul) {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  .post-body :global(.tldr li),
+  .post-body :global(.summary li) {
+    margin-bottom: var(--space-2);
+  }
+
+  .post-body :global(.tldr li:last-child),
+  .post-body :global(.summary li:last-child) {
+    margin-bottom: 0;
   }
 
   .post-body :global(code) {
