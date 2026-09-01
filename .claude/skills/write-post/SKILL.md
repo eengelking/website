@@ -12,8 +12,8 @@ Both the blog and interests sections of edengelking.com are live and indexable. 
 Don't draft from the bullets right away. A list of bullets tells you *what* he wants to cover, not the shape of the piece, and drafting too early produces something generic that then needs to be re-argued from scratch.
 
 First, confirm which collection this is for if it isn't obvious from what he's said:
-- **blog** (`src/content/blog/`) — technical/professional writing: architecture, incidents, tools, career reflections.
-- **interests** (`src/content/interests/`) — personal, outside-of-work topics.
+- **blog** (`src/content/blog/`) — technical/professional writing: architecture, incidents, tools, career reflections. Fine to go deep and use real jargon; the audience is other engineers.
+- **interests** (`src/content/interests/`) — personal, outside-of-work topics, even ones that touch a technical or scientific subject (physics, math, science-adjacent curiosity). Write these for someone with zero background in the subject, not for engineers or scientists. This isn't a paper or a technical explainer, it's a blog post by someone with a passing interest, so it needs to read as easy and approachable, not credentialed. Concretely: unpack any term a general reader wouldn't already know the first time it comes up (in a plain clause, not a footnote), keep sentences short, and favor "why this matters" over precision for its own sake. If a paragraph reads like it's trying to satisfy an expert reader, rewrite it for the reader who's never thought about the topic before.
 
 Then ask whatever subset of these actually needs answering — skip ones the bullets already make obvious:
 - What's the actual point of this post? What should someone remember after reading it?
