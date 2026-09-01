@@ -123,6 +123,10 @@ export const skills: SkillEntry[] = [
   { name: 'Document Processing & OCR (Tesseract)', category: 'AI & Machine Learning', tags: ['ocr', 'tesseract', 'document-processing'] },
   { name: 'PII Detection & Dynamic Redaction', category: 'AI & Machine Learning', tags: ['pii', 'redaction'] },
   { name: 'Structured Data Extraction', category: 'AI & Machine Learning', tags: ['data-extraction'] },
+  { name: 'MCP (Model Context Protocol) Tool/Server Development', category: 'AI & Machine Learning', tags: ['mcp', 'agents', 'ai'] },
+  { name: 'RAG — Retrieval-Augmented Generation (pgvector, LangChain, LlamaIndex)', category: 'AI & Machine Learning', tags: ['rag', 'pgvector', 'langchain', 'llamaindex'] },
+  { name: 'Self-Hosted & Open Model Tooling (Hugging Face, Ollama, Open WebUI)', category: 'AI & Machine Learning', tags: ['huggingface', 'ollama', 'open-webui', 'self-hosted'] },
+  { name: 'Rapid AI-Driven Prototyping (Replit, Bolt.new, Lovable)', category: 'AI & Machine Learning', tags: ['replit', 'bolt-new', 'lovable', 'prototyping'] },
 
   // Databases & Data Engineering
   { name: 'PostgreSQL (Sharding, Clustering)', category: 'Databases & Data Engineering', tags: ['postgresql', 'sql'] },
