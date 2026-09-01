@@ -1,6 +1,6 @@
 ---
 name: write-post
-description: Interviews Ed about a rough set of bullet points and drafts a finished blog or interests post as a markdown file in this Astro site's content collections (src/content/blog or src/content/interests). Use this whenever Ed hands over bullets for a post, says something like "help me write a blog post about X" or "I want to write an interests post about Y", or asks to turn notes/an idea into a post for the site. Also use it if he asks to revise or polish a draft post that already exists in one of those directories.
+description: Interviews Ed about a rough set of bullet points and drafts a finished blog or interests post as a markdown file in this Astro site's content collections (src/content/blog or src/content/interests). Use this whenever Ed hands over bullets for a post, says something like "help me write a blog post about X" or "I want to write an interests post about Y", or asks to turn notes/an idea into a post for the site. Also use it if he asks to revise or polish a draft post that already exists in one of those directories, or asks for a LinkedIn (or other social) post summarizing one.
 ---
 
 # Write Post
@@ -154,3 +154,21 @@ Blog and interests are live, indexable sections (Nav links visible, in the sitem
 A new post is automatically picked up by the existing SEO wiring with no extra work needed per post: it flows into the index page's `Blog`/`ItemList` JSON-LD and gets its own `BlogPosting` (with `author`/`publisher`) the moment `draft` flips to `false`. Don't add per-post structured data or duplicate any of this — it lives at the page level in `blog/[slug].astro`, `interests/[slug].astro`, `blog/index.astro`, and `interests.astro`.
 
 What's worth a second look after adding posts, not per post but periodically: whether the index page's `description` prop (the meta/OG description for `/blog` or `/interests`, passed to `BaseLayout` in `blog/index.astro`/`interests.astro`) and the on-page intro copy (`src/data/pageIntros.ts`) still describe what the collection actually contains. Four placeholder-quality posts read very differently from four real incident writeups — if a batch of posts meaningfully shifts what a reader would find in the collection, flag to Ed that the index copy might be worth revisiting, rather than letting it silently go stale.
+
+## Step 7: LinkedIn companion posts
+
+Ed will sometimes want a short LinkedIn post to go with a blog or interests post, either linking straight to it or (commonly) posted first with the link following an hour or so later, to give the platform's own distribution a chance before sending readers off-site. Ask which he wants if it isn't already clear, and if he's holding the link back, don't add a placeholder link or a "link in comments" line unless he asks for one — just end the post the way he actually would (see below).
+
+This is not the blog/interests post compressed. It's a different, looser register, and treating it as "the same voice, just shorter" produces something that still reads stiff. Differences that actually matter, learned from Ed's own edits to a draft:
+
+- **Shorter, punchier sentences than the blog voice**, and more of them stand alone as their own paragraph or near it. LinkedIn's line-break rhythm rewards this; a paragraph that's fine in a blog post reads dense here.
+- **Rhetorical questions can hang unresolved instead of being answered in the same breath.** The blog voice states a claim, then immediately resolves it ("could X be true? No, because Y."). Ed's LinkedIn edit dropped that immediate resolution and just left the question sitting there ("I wondered if déjà vu be your brain brushing up against it?") without the next sentence closing it down. Don't rush to tidy up every open thread the way Step 4 asks a blog post to.
+- **Hedge with "I think" / "I wondered" rather than stating conclusions flatly.** This is more first-person and in-the-moment than the blog voice, which tends to state things directly once it's decided they're true.
+- **Casual interjections are fine** ("Yeah, it's not a clean 1-1 match, but...") in a way they wouldn't be in a blog post.
+- **A wink with quotation marks around an ordinary word** (`"boring" neuroscience`) reads as natural here; it would read try-hard in a blog post.
+- **Cut the neatly-resolving summary sentence at the end of a paragraph** ("Open question, not settled science.") more often than not. The blog voice likes to land a clean button on each point; the LinkedIn voice can let a paragraph just stop.
+- Still no em-dashes, no rule-of-three padding, no stock transitions, no "it's not just X, it's Y" — the core no-AI-tells rules from Step 4 apply everywhere, this section only covers what's different.
+
+**Format**: plain text, no markdown syntax and no HTML (LinkedIn doesn't render either), no headers, short paragraphs separated by blank lines. Length is a fraction of the source post, roughly 150-250 words, built around the single most interesting thread of the piece rather than a compressed table of contents. End on whatever Ed would actually say next: a tease that the full writeup is coming, a direct link if he wants one included now, or just the thought landing with nothing appended.
+
+Draft it in the chat as plain text for Ed to copy, not as a file in the repo.
