@@ -11,13 +11,13 @@ export const projects: Project[] = [
     name: 'Multi-Cloud Kubernetes VM Operator',
     description:
       'A Kubernetes operator (~11,300 lines of Go) enabling declarative management of cloud virtual machines across AWS, Azure, Hetzner, and DigitalOcean through Custom Resource Definitions. Implements the controller pattern with reconciliation loops, provider-agnostic CRDs, TTL-based cleanup, and full GitOps compatibility.',
-    technologies: ['Go', 'Kubernetes Operators', 'CRDs', 'Helm', 'Prometheus'],
+    technologies: ['Go', 'Kubernetes Operators', 'CRDs', 'Helm', 'Prometheus', 'Claude Code'],
   },
   {
     name: 'Web-Based Terminal Proxy',
     description:
       'A browser-accessible SSH terminal proxy that integrates natively with Kubernetes, automatically retrieving SSH credentials from K8s Secrets. Session persistence via deterministic tmux naming, a real-time connection checklist, and sub-1-second server startup via lazy-loaded dependencies.',
-    technologies: ['Node.js', 'TypeScript', 'Kubernetes', 'tmux', 'xterm.js'],
+    technologies: ['Node.js', 'TypeScript', 'Kubernetes', 'tmux', 'xterm.js', 'Claude Code'],
   },
   {
     name: 'bkn — Lightweight Command Runner',
@@ -37,8 +37,20 @@ export const projects: Project[] = [
     name: 'localscore',
     description:
       'A self-hosted tool that turns a raw CVSS base score into the score that actually applies to a specific system. A short plain-English interview about reachability, auth, data sensitivity, and blast radius per "location" reshapes any pasted CVSS vector or CVE lookup into a context-aware environmental score.',
-    technologies: ['TypeScript', 'Hono', 'React', 'SQLite', 'Docker'],
+    technologies: ['TypeScript', 'Hono', 'React', 'SQLite', 'Docker', 'Claude Code'],
     link: 'https://github.com/eengelking/localscore',
+  },
+  {
+    name: 'Ohrwurm',
+    description:
+      "An iOS app for learning German through music. Play a song in landscape and it shows German lyrics on one side, English on the other, synced line-by-line to the audio via timestamped .lrc files.",
+    technologies: ['Swift', 'iOS', 'SwiftUI', 'Xcode', 'Claude Code'],
+  },
+  {
+    name: 'Readyband',
+    description:
+      "A self-hosted certification practice platform covering 30 certs across Kubernetes, Security, PM, and AWS. Spaced repetition (SM-2) schedules review, sessions are weighted by each exam's real domain blueprint, and 3,500+ questions live as version-controlled YAML instead of database rows.",
+    technologies: ['Python', 'FastAPI', 'HTMX', 'Alpine.js', 'SQLite', 'Claude Code'],
   },
   {
     name: 'LookSharp',
