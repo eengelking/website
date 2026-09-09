@@ -45,14 +45,12 @@ export const projects: Project[] = [
     description:
       "An iOS app for learning German through music. Play a song in landscape and it shows German lyrics on one side, English on the other, synced line-by-line to the audio via timestamped .lrc files.",
     technologies: ['Swift', 'iOS', 'SwiftUI', 'Xcode', 'Claude Code'],
-    link: 'https://github.com/eengelking/ohrwurm',
   },
   {
     name: 'Readyband',
     description:
       "A self-hosted certification practice platform covering 30 certs across Kubernetes, Security, PM, and AWS. Spaced repetition (SM-2) schedules review, sessions are weighted by each exam's real domain blueprint, and 3,500+ questions live as version-controlled YAML instead of database rows.",
     technologies: ['Python', 'FastAPI', 'HTMX', 'Alpine.js', 'SQLite'],
-    link: 'https://github.com/eengelking/readyband',
   },
   {
     name: 'LookSharp',
