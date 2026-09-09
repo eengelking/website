@@ -11,13 +11,13 @@ export const projects: Project[] = [
     name: 'Multi-Cloud Kubernetes VM Operator',
     description:
       'A Kubernetes operator (~11,300 lines of Go) enabling declarative management of cloud virtual machines across AWS, Azure, Hetzner, and DigitalOcean through Custom Resource Definitions. Implements the controller pattern with reconciliation loops, provider-agnostic CRDs, TTL-based cleanup, and full GitOps compatibility.',
-    technologies: ['Go', 'Kubernetes Operators', 'CRDs', 'Helm', 'Prometheus'],
+    technologies: ['Go', 'Kubernetes Operators', 'CRDs', 'Helm', 'Prometheus', 'Claude Code'],
   },
   {
     name: 'Web-Based Terminal Proxy',
     description:
       'A browser-accessible SSH terminal proxy that integrates natively with Kubernetes, automatically retrieving SSH credentials from K8s Secrets. Session persistence via deterministic tmux naming, a real-time connection checklist, and sub-1-second server startup via lazy-loaded dependencies.',
-    technologies: ['Node.js', 'TypeScript', 'Kubernetes', 'tmux', 'xterm.js'],
+    technologies: ['Node.js', 'TypeScript', 'Kubernetes', 'tmux', 'xterm.js', 'Claude Code'],
   },
   {
     name: 'bkn — Lightweight Command Runner',
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     name: 'localscore',
     description:
       'A self-hosted tool that turns a raw CVSS base score into the score that actually applies to a specific system. A short plain-English interview about reachability, auth, data sensitivity, and blast radius per "location" reshapes any pasted CVSS vector or CVE lookup into a context-aware environmental score.',
-    technologies: ['TypeScript', 'Hono', 'React', 'SQLite', 'Docker'],
+    technologies: ['TypeScript', 'Hono', 'React', 'SQLite', 'Docker', 'Claude Code'],
     link: 'https://github.com/eengelking/localscore',
   },
   {
