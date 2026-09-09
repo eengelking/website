@@ -50,7 +50,7 @@ export const projects: Project[] = [
     name: 'Readyband',
     description:
       "A self-hosted certification practice platform covering 30 certs across Kubernetes, Security, PM, and AWS. Spaced repetition (SM-2) schedules review, sessions are weighted by each exam's real domain blueprint, and 3,500+ questions live as version-controlled YAML instead of database rows.",
-    technologies: ['Python', 'FastAPI', 'HTMX', 'Alpine.js', 'SQLite'],
+    technologies: ['Python', 'FastAPI', 'HTMX', 'Alpine.js', 'SQLite', 'Claude Code'],
   },
   {
     name: 'LookSharp',
