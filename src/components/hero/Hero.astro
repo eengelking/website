@@ -9,8 +9,9 @@ import { hero } from '../../data/hero';
     </p>
     <div class="hero-card">
       <h1>{hero.name}</h1>
-      <p class="hero-role">{hero.title} <span class="divider">·</span> <span class="mono tagline">{hero.tagline}</span></p>
+      <p class="hero-role mono tagline">{hero.tagline}</p>
       <p class="hero-subtext">{hero.subtext}</p>
+      <img class="hero-photo" src="/images/ed-engelking.png" alt="" aria-hidden="true" />
     </div>
   </div>
 </section>
@@ -28,10 +29,16 @@ import { hero } from '../../data/hero';
   }
 
   .hero-card {
+    position: relative;
     background: var(--color-hero);
     border: 1px solid var(--color-hero-border);
     border-radius: var(--radius);
     padding: var(--space-5);
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    display: none;
   }
 
   .hero-card h1 {
@@ -62,11 +69,7 @@ import { hero } from '../../data/hero';
     font-size: var(--text-lg);
     color: var(--color-hero-role);
     margin-top: var(--space-2);
-  }
-
-  .divider {
-    color: var(--color-hero-role);
-    opacity: 0.6;
+    max-width: 56ch;
   }
 
   .tagline {
@@ -82,5 +85,18 @@ import { hero } from '../../data/hero';
 
   @media (prefers-reduced-motion: reduce) {
     .pulse { animation: none; }
+  }
+
+  @media (min-width: 1040px) {
+    .hero-photo {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: clamp(290px, 29vw, 430px);
+      height: auto;
+      z-index: 1;
+      filter: drop-shadow(-8px 8px 8px rgba(6, 12, 20, 0.5));
+    }
   }
 </style>
