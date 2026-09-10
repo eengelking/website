@@ -18,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = 'Ed Engelking II — Chief Architect. 30 years building and operating production systems.',
+  description = 'Ed Engelking II — 30 years building and operating production systems.',
   titleOverride,
   noindex = false,
   jsonLd = [],
@@ -33,7 +33,6 @@ const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: hero.name,
-  jobTitle: hero.title,
   description: `${about.hook} ${hero.subtext}`,
   url: 'https://edengelking.com',
   sameAs: [contact.linkedinUrl, contact.githubUrl, contact.youtubeUrl],
