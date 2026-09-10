@@ -77,4 +77,18 @@ export const projects: Project[] = [
       'An early-stage hardened HCI platform built on bootc, designed to be easy to upgrade and scale.',
     technologies: ['bootc', 'Immutable OS', 'HCI'],
   },
+  {
+    name: 'agent',
+    description:
+      "A standardized baseline CLAUDE.md distilled from every CLAUDE.md across this machine's projects, kept short by pushing procedure out to a companion skills plugin instead of accreting rules inline. Policy lives here — branch-first, PRs before merge, no unattended merges to main — while the how-to lives in eengelking/skills.",
+    technologies: ['Claude Code', 'AI Agents', 'Developer Tools'],
+    link: 'https://github.com/eengelking/agent',
+  },
+  {
+    name: 'skills',
+    description:
+      'A Claude Code plugin of project-agnostic skills — git branching and safety, PR/issue workflow, release cutting, and documentation sync — installable in one step via the Claude Code plugin marketplace and shared across every project rather than copy-pasted between them.',
+    technologies: ['Claude Code', 'Plugin', 'Shell'],
+    link: 'https://github.com/eengelking/skills',
+  },
 ];
