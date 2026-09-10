@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ProjectSearch } from '../components/projects/ProjectSearch';
+import { projects } from '../data/projects';
+
+const projectsListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: projects.map((project, i) => ({
+    '@type': 'SoftwareSourceCode',
+    position: i + 1,
+    name: project.name,
+    description: project.description,
+    keywords: project.technologies.join(', '),
+    ...(project.link ? { url: project.link } : {}),
+  })),
+};
+---
+
+<BaseLayout
+  title="Projects"
+  description="Side projects Ed Engelking has built outside the day job — CLI tools, Kubernetes operators, iOS apps, and Claude Code tooling, searchable by name, description, or technology."
+  jsonLd={[projectsListLd]}
+>
+  <section class="projects-header">
+    <div class="container">
+      <p class="eyebrow">projects</p>
+      <h1>Things I've built on the side</h1>
+      <p class="page-intro">
+        A running list of side projects — some shipped, some still early. Search below by name, description, or
+        technology, or click a tag to filter.
+      </p>
+    </div>
+  </section>
+
+  <section class="projects-list">
+    <div class="container">
+      <ProjectSearch client:load />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-header {
+    padding: var(--space-6) 0 var(--space-4);
+  }
+
+  .page-intro {
+    max-width: 75ch;
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    margin-top: var(--space-2);
+  }
+
+  .projects-list {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-6);
+  }
+</style>
