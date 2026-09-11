@@ -69,6 +69,23 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
+### AI-ism scan list
+
+Beyond em-dashes, grep every draft for these before showing it to Ed — each one is a real tell, either a stock phrase that shows up disproportionately in AI writing, or a structural habit (meta-commentary, false balance, forced triplets) already called out above. Treat a hit as a strong signal to rewrite the sentence, not an automatic delete; a couple of these are ordinary words that are only a problem in their stock collocation (e.g. "robust" is fine, "robust solution" isn't).
+
+Stock phrases and words (grep case-insensitive, `grep -inE` with the pattern below is a reasonable single pass):
+```
+grep -inE "it's (important|worth) (to note|noting)|needless to say|in conclusion|to sum up|let's (dive|explore)|dive into|deep dive|delve into|unlock the|unleash|game.?changer|paradigm shift|tapestry|navigate the complexities|ever-evolving|fast-paced world|robust solution|seamless(ly)?|leverage[ds]?\b|myriad of|plethora of|stands as a testament|underscores the|in the realm of|when it comes to|arguably one of|boasts a|a testament to|not only .* but also" <file>
+```
+- **Meta-commentary announcing a point instead of making it** — covered above ("worth sitting with," "here's the part that actually"). Add new ones you catch to this list.
+- **Repeated stock superlatives** across the same post ("the clearest example," "the cleanest precedent") — covered above.
+- **False balance / forced hedging** ("on one hand... on the other," "while X, Y") when Ed would just state the opinion.
+- **The "not just X, it's Y" construction** and its cousins ("not only X, but Y").
+- **Forced triplets** — three adjectives or three examples where one or two would do.
+- **Generic personification of technology or abstractions** ("technology has a way of...", "the industry continues to grapple with...") — Ed writes about specific systems and specific incidents, never "the industry" or "technology" as an actor.
+
+This list is deliberately not exhaustive, and it will go stale as AI writing patterns shift. **Whenever Ed calls out a phrase or pattern in feedback as reading like AI, add it to this list right then** (both the prose bullets and, where it's grep-able, the pattern above) rather than just fixing the one instance in the draft at hand — the point is that the skill gets better at catching it next time without Ed having to repeat himself.
+
 ### State the friction, not just the fact
 
 When a paragraph explains that something changed (a tool, a process, a habit), don't stop at describing what the old way required, say why it was actually annoying enough that people wanted out. "C made you manage memory by hand" states a fact a reader has to take on faith that it mattered. "C made you manage memory by hand, which was a pain" gives the reader the motive, not just the mechanism. This is a small edit but it's the difference between a history recap and an argument.
@@ -147,7 +164,22 @@ Uses the same `.summary` / `.summary-label` CSS pair (styled identically to `.tl
   Once images are in a post, don't sign off on the layout from reading markdown alone. Start the dev server, and if a real browser isn't available to check in, drive a headless one (`npx playwright install chromium` the first time if it's not already cached, then a short script with `page.screenshot({ fullPage: true })`) at both a desktop and a mobile viewport width, and look at the rendered output before calling the post done.
 - **Writing the caption**: `alt` and `figcaption` do different jobs and shouldn't say the same thing. `alt` is a literal, complete description of what's in the image, for someone who can't see it. `figcaption` is visible commentary sitting right under the image, for someone who *can*, so it should add something the image alone doesn't: what to notice, why it's the interesting part, or a callback to the number/claim in the surrounding prose (see the "two pushed higher, two pushed lower" pattern, a caption that interprets the picture rather than narrating it). Keep it to one sentence, same voice rules as the rest of the post (no em-dashes, no throat-clearing "This screenshot shows..."), and never leave it as a copy of the alt text with the punctuation changed.
 
-Write the file directly into the repo once drafted. Then show Ed the rendered result and ask what he'd change — treat the first pass as a draft to react to, not a final answer.
+Write the file directly into the repo once drafted, then run the validation pass below before showing it to Ed.
+
+### Validation pass, every draft and every revision
+
+Run this after writing the file (or editing it in response to feedback) and before telling Ed it's ready to look at. It's not optional for "small" edits — a one-line tweak can reintroduce an em-dash or drift the tone just as easily as a first draft can.
+
+1. **Em-dash check**: `grep -n "—" <file>`. Zero hits or fix every one.
+2. **AI-ism scan**: run the grep pattern from the AI-ism scan list above, and separately re-read the post for the non-grep-able tells on that list (meta-commentary, forced triplets, false balance, repeated superlatives).
+3. **Frontmatter schema**: `title`, `description`, `date` (`YYYY-MM-DD`), `tags` (array), `draft` (bool) all present and correctly typed against `src/content.config.ts`. `description` reads as real ad copy, not a restatement of the title.
+4. **Tag reuse**: every tag either already exists in the collection or was explicitly proposed to and confirmed by Ed.
+5. **Denylist**: nothing matching `DENYLIST` in `scripts/check-sensitive.sh` (Ed's personal email, compensation figures) appears anywhere in the file.
+6. **Factual claims**: every external, checkable claim added or changed in this pass has been verified against a primary source per the rule below, not recalled from training data.
+7. **Voice fit**: reread the post's opening paragraph and closing paragraph back to back against the reference post pulled in Step 3. If they don't sound like they belong to the same author, revise before showing Ed, don't let him be the one to catch it.
+8. **Format rules**: TL;DR/Key Takeaways present only where the density or narrative-stakes rule above actually calls for them, written as raw HTML (not markdown bullets) if present; headers used only if the piece is genuinely multi-topic, not narrative beats; hook opens on the concrete/surprising thing, not a thesis statement or a recap sentence.
+
+Only after this pass show Ed the rendered result and ask what he'd change — treat the first pass as a draft to react to, not a final answer.
 
 **If publish status wasn't already settled in Step 1, confirm it exactly once per post — the first time it reaches a real stopping point** (Ed stops requesting changes and the piece reads as complete, not a skeleton). Default to `draft: false` at that point; only ask if there's a real reason to think he might want it held back (sensitive topic, timing, explicitly unsure earlier). Don't ask just as a formality when publishing is clearly the obvious outcome.
 
