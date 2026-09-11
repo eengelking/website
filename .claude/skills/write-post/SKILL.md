@@ -55,6 +55,8 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 - **No rule-of-three padding** — don't reach for a third adjective or example just to complete a triplet. Say it in one or two and stop.
 - **No stock transitions** ("moreover," "furthermore," "in today's world," "at the end of the day").
 - **Don't hedge both sides for balance** ("on one hand... on the other...") when Ed would just state the opinion.
+- **No meta-commentary sentences that announce a point is important instead of just making it** — "that's the part worth sitting with," "here's the part that actually explains X," "and this is the key thing." Ed doesn't flag his own points as significant; he just makes them. Cut the announcement and let the next sentence stand on its own.
+- **Don't lean on the same evaluative phrase more than once in a post** ("the clearest example," "the cleanest precedent") — reusing a stock superlative across a TL;DR, the body, and a closing summary is a pattern-completion tell even when each individual instance would pass alone. Vary the phrasing or cut the repeat entirely.
 - Prefer short, plain sentences over ones dressed up to sound impressive. If a sentence would look at home in a corporate blog post or an "I asked an AI to write about my job" parody, cut it.
 - **On a complex or technical topic, succinctness is part of telling the story well, not a tax on it.** The instinct on a dense subject is to over-explain: restate the same point from three angles so it's sure to land, or walk through every supporting detail before making the point it supports. Resist it. Say the point once, clearly, with the one example or number that makes it concrete, and move on. If a paragraph and the one after it are making the same claim in different words, cut one. A reader trusts a piece more, not less, when it says a hard thing in a few plain sentences instead of hedging it across a page.
 - **Use bullets for enumerable content** — a list of failure causes, a set of discrete lessons learned, concrete steps taken — instead of burying it in a run-on sentence. It reads easier and the items stand out. But don't bullet a closing/"moral of the story" paragraph that's meant to land as one continuous thought building to a final line; breaking that up kills the payoff. When in doubt, ask whether the sentence is a list of separate things or a single idea building momentum, and only bullet the former.
@@ -66,6 +68,14 @@ This is the part that matters most and the easiest to get wrong. A post that rea
   - **Every post, regardless of format**, needs the "tell them what you told them" close: a payoff line or short reflection that ties back to the opening problem (a closing bullet list of lessons, or a single landing line like the ending of `earning-the-server-room.md`). Keep it in Ed's voice, never a labeled "Conclusion" section.
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
+
+### State the friction, not just the fact
+
+When a paragraph explains that something changed (a tool, a process, a habit), don't stop at describing what the old way required, say why it was actually annoying enough that people wanted out. "C made you manage memory by hand" states a fact a reader has to take on faith that it mattered. "C made you manage memory by hand, which was a pain" gives the reader the motive, not just the mechanism. This is a small edit but it's the difference between a history recap and an argument.
+
+### Pre-empt the objection the reader is already forming
+
+If a post makes a claim the reader will obviously agree with on its own ("developers want to understand their code"), don't just assert it and move past it, that's the exact spot a skeptical reader stops trusting the piece, because it feels like the obvious counterargument got skipped. Name the obvious agreement out loud ("sure, we all do") and then pivot to the actual, less-obvious point it was hiding. That pivot, not the restated obvious point, is usually where the real argument of the post lives.
 
 ### Hooks that earn attention
 
