@@ -6,7 +6,9 @@ tags: ["career", "leadership", "ai"]
 draft: false
 ---
 
-A colleague of mine wouldn't let AI anywhere near his code, and he was falling behind the rest of the team for it, both in output and in the skill itself. He wasn't being stubborn. He told me straight out: he got into this field to be close to the code, to understand exactly what's happening under his hands, and handing that off to a model felt like giving that up. I didn't try to talk him out of the feeling. Instead I walked him through his own career, because he'd made this exact trade before without ever calling it a loss. Here's the story I shared with him.
+A colleague of mine wouldn't let AI anywhere near his code, and he was falling behind the rest of the team for it, both in output and in the skill itself. He wasn't being stubborn. He told me straight out: he got into this field to be close to the code, to understand exactly what's happening under his hands, and handing that off to a model felt like giving that up.
+
+I didn't try to talk him out of the feeling. Instead I walked him through his own career, because he'd made this exact trade before without ever calling it a loss. Here's the story I shared with him.
 
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
@@ -37,7 +39,9 @@ Compiling used to be a human job. Somebody sat there and manually turned logic i
 
 From there the climb kept going and mostly stopped being remarkable. C gave programmers structure and portability but still made you manage memory by hand, and getting it wrong had real teeth: Microsoft's own security team found that roughly 70 percent of the CVEs they patch every year trace back to memory safety bugs ([Microsoft Security Response Center, "A proactive approach to more secure code"](https://www.microsoft.com/en-us/msrc/blog/2019/07/a-proactive-approach-to-more-secure-code)). Go and Python took that burden away with automatic memory management instead of manual allocation and freeing ([Go, "Frequently Asked Questions (FAQ)"](https://go.dev/doc/faq); [Python, "Memory Management"](https://docs.python.org/3/c-api/memory.html)), along with the need to write your own data structures, your own networking stack, your own anything that a well-maintained library already does correctly.
 
-My colleague told me he likes writing Go and understanding what's happening in it. Sure, we all do! I don't know a developer who doesn't want to understand what's happening in their codebase. However, I asked him if he's writing his own Go libraries, or hand-managing memory the way C requires. He wasn't, of course. Neither am I. We'd already made this trade, more than once, without ever framing it as giving something up.
+My colleague told me he likes writing Go and understanding what's happening in it. Sure, we all do! I don't know a developer who doesn't want to understand what's happening in their codebase.
+
+However, I asked him if he's writing his own Go libraries, or hand-managing memory the way C requires. He wasn't, of course. Neither am I. We'd already made this trade, more than once, without ever framing it as giving something up.
 
 Almost nobody actually reads the source of the libraries they depend on, especially the popular ones, and that's the real reason this transition is hard for people. A 2023 study of the 1,000 most-downloaded packages on npm, PyPI, Crates.io, and RubyGems found that only 9 percent of those packages had every single update fully code reviewed before it shipped ([Imtiaz and Williams, "Are Your Dependencies Code Reviewed?"](https://arxiv.org/abs/2206.09422)). We trust that enough of the community has used it, poked at it, and filed the bugs, and that collective thumbs-up is good enough to build on. Nothing stops a developer from extending that same trust to code an LLM writes. We just haven't built the habit yet.
 
