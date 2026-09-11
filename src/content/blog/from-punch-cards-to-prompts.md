@@ -25,7 +25,7 @@ That wasn't a design choice anyone loved. It was the only interface anyone had.
 
 ## Assembly gave programmers a language
 
-Assembly language was the first real abstraction over that. Instead of encoding instructions as raw binary by hand, a programmer could write something like `ADD` or `MOV`, human-readable mnemonics that mapped directly to the machine's own instruction set. It was still tied to one specific processor's design, and it still required understanding the hardware underneath it in detail. But it meant a person could read their own program back and make sense of it, which punch-card binary never really allowed.
+Assembly language was the first real abstraction over that. Kathleen Booth is generally credited with writing the first one, publishing "Coding for A.R.C." in 1947 to describe it ([Wikipedia, "Kathleen Booth"](https://en.wikipedia.org/wiki/Kathleen_Booth)). Instead of encoding instructions as raw binary by hand, a programmer could write something like `ADD` or `MOV`, human-readable mnemonics that mapped directly to the machine's own instruction set. It was still tied to one specific processor's design, and it still required understanding the hardware underneath it in detail. But it meant a person could read their own program back and make sense of it, which punch-card binary never really allowed.
 
 ## The compiler removed the translator
 
