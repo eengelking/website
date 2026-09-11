@@ -6,7 +6,7 @@ tags: ["career", "leadership", "ai"]
 draft: false
 ---
 
-A colleague of mine wouldn't let AI anywhere near his code, and he was falling behind the rest of the team for it, both in output and in the skill itself. He wasn't being stubborn. He told me straight out: he got into this field to be close to the code, to understand exactly what's happening under his hands, and handing that off to a model felt like giving that up. I didn't try to talk him out of the feeling. I walked him through where that feeling had already taken him before.
+A colleague of mine wouldn't let AI anywhere near his code, and he was falling behind the rest of the team for it, both in output and in the skill itself. He wasn't being stubborn. He told me straight out: he got into this field to be close to the code, to understand exactly what's happening under his hands, and handing that off to a model felt like giving that up. I didn't try to talk him out of the feeling. Instead I walked him through his own career, because he'd made this exact trade before without ever calling it a loss.
 
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
