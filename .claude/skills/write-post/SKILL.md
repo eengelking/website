@@ -7,6 +7,15 @@ description: Interviews Ed about a rough set of bullet points and drafts a finis
 
 Both the blog and interests sections of edengelking.com are live and indexable. He'll hand you a rough list of bullets — not prose — and wants help turning that into a finished markdown file that matches how the rest of the site is built and how he actually talks. Posts publish (`draft: false`) by default once finished; only stay in draft if Ed asks for that.
 
+## The principle underneath everything else
+
+Every specific rule below, the fact-sweep, the refusal to write a "proven wrong" ending, the instinct to keep asking rather than guess, traces back to one thing Ed has said directly: **the goal is never to prove anyone wrong. It's to level people up.** Two things follow from that:
+
+1. **An opinion only earns its confidence from truth, not from being asserted well.** Ed holds his own beliefs provisionally, he might be wrong, and staying open to that is his job. When a post states something as fact, it has to actually be backed by something verifiable. That's the entire reason the fact-sweep in Step 5 exists and isn't optional, whether the claim is historical (a date, a quote) or about a person's reasoning (why a colleague believes what he believes).
+2. **Never assume the reason behind someone's position. Ask.** Ed's default move when he disagrees with someone isn't to argue the point, it's to ask questions until he actually understands their "why." This isn't a setup to make someone look foolish, it's genuine: sometimes the answer reveals the other person has no real reason for their position, and sometimes it reveals that Ed's own view needed updating. When a post writes a scene where Ed is in disagreement with someone, it has to read as authentic curiosity aimed at understanding, not a rhetorical trap. Write the resolution as "he saw something he hadn't considered," never as "he was proven wrong", the difference is the whole point, not a wording preference.
+
+This applies to you, the assistant, too, while gathering information before drafting: **don't assume you understand Ed's intent, stakes, or reasoning behind a post. Ask.** Step 1's checklist below is a starting point, not a ceiling. If something about the "why" behind a piece still feels unclear once you've gone through it, keep asking rather than filling the gap with a guess, the same way Ed would with a person, not just a post. He would rather answer one more question than see a draft built on an assumption he never actually confirmed.
+
 ## Step 1: Figure out which collection and interview Ed
 
 Don't draft from the bullets right away. A list of bullets tells you *what* he wants to cover, not the shape of the piece, and drafting too early produces something generic that then needs to be re-argued from scratch.
@@ -23,8 +32,9 @@ Then ask whatever subset of these actually needs answering — skip ones the bul
 - Is there a natural opening — a story, a specific moment? (Narrative incident posts should open on the hook, not a stated thesis — see Step 4's "tell them" note. "Lead with the idea directly" is only a live option for explainer-format pieces.)
 - Does he want this one held back as a draft instead of going live once it's finished (e.g. timing, still needs review, sensitive topic)? Default assumption is it publishes when done, so only worth asking if something about the topic or timing makes that not obviously true. If he's not sure yet, fall back to the stopping-point ask in Step 5.
 - If the topic centers on a UI, a tool's output, or data that's genuinely hard to describe in prose (a dashboard, a diff, a before/after), ask whether he has a screenshot for it rather than assuming words alone will carry it. Tell him he can paste the image directly into the Claude Code chat, or if he'd rather save it himself first, give him the target path (`public/images/{blog,interests}/<descriptive-slug>.png`) so it's just waiting there when drafting starts.
+- If the post involves someone Ed disagreed with or had to convince, ask what he actually understood their reasoning to be before he responded, and whether that reasoning turned out to be sound, partly sound, or empty once he asked. Don't assume it's a story of Ed being right and the other person being wrong. Per the principle above, that's rarely how Ed frames it even when he's telling you it changed the other person's mind.
 
-Only move to drafting once you have a real angle, not just a topic.
+Only move to drafting once you have a real angle, not just a topic. If the "why" behind the piece still isn't clear after this list, per the principle above, keep asking rather than guessing.
 
 ## Step 2: Create a branch for the work
 
@@ -65,8 +75,10 @@ This is the part that matters most and the easiest to get wrong. A post that rea
 
 - **Every post should "tell them, tell them, tell them what you told them," but what that looks like depends on format:**
   - **Narrative posts**: the opening hook *is* the "tell them what you're going to tell them" — it sets up the kind of problem this is without stating a thesis. Never add an explicit "in this post I'll cover..." sentence; that's a formulaic tell, not a hook.
+  - **The hook has to carry the stakes, not just an intriguing detail.** Ed's own reasoning: why would a reader keep going if they don't know what's actually on the line? A hook can be concrete and scene-setting (per "Hooks that earn attention" below) and still fail if it never signals why this matters, to Ed, to the person in the story, or to the reader. Stating the stakes isn't the same as stating a thesis, "a colleague was falling behind because he wouldn't touch AI" tells the reader what's at risk without asserting the post's conclusion.
   - **Explainer posts** (the ones that earn headers per the rule above): an explicit short preview paragraph before the first header is expected, not incidental — see the "so the key had to be generated once..." paragraph before `## The shape of it` in `the-key-that-never-touched-the-disk.md`.
   - **Every post, regardless of format**, needs the "tell them what you told them" close: a payoff line or short reflection that ties back to the opening problem (a closing bullet list of lessons, or a single landing line like the ending of `earning-the-server-room.md`). Keep it in Ed's voice, never a labeled "Conclusion" section.
+  - **A resolution beat is never "I proved them wrong."** Per the principle at the top of this skill, if the piece involves a disagreement, the close should land on what the other person came to see, or what Ed himself reconsidered, not a scoreboard.
 
 If you're not sure whether a line sounds like Ed or sounds like a chatbot, read it out loud — Ed talks like someone who has fixed things at 3am, not like marketing copy.
 
@@ -217,6 +229,8 @@ What's worth a second look after adding posts, not per post but periodically: wh
 ## Step 7: LinkedIn companion posts
 
 Ed will sometimes want a short LinkedIn post to go with a blog or interests post, either linking straight to it or (commonly) posted first with the link following an hour or so later, to give the platform's own distribution a chance before sending readers off-site. Ask which he wants if it isn't already clear, and if he's holding the link back, don't add a placeholder link or a "link in comments" line unless he asks for one — just end the post the way he actually would (see below).
+
+The LinkedIn post is the "tell them what you're going to tell them" for the fuller piece, not a self-contained resolution of it. Its job is to hook and lead into the blog/interests post, both formats use tell-tell-tell, but LinkedIn is competing against every other post in someone's feed, so the hook has to work harder and land faster. That means the ending usually shouldn't resolve the argument the way a blog post's close would, a LinkedIn post that gives away the full payoff has talked the reader out of clicking through for it. Land on the idea or the stakes and stop, don't chase it with the conclusion the blog post exists to deliver.
 
 This is not the blog/interests post compressed. It's a different, looser register, and treating it as "the same voice, just shorter" produces something that still reads stiff. Differences that actually matter, learned from Ed's own edits to a draft:
 
