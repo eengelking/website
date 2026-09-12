@@ -60,6 +60,14 @@ Before drafting, read one or two existing posts in the target collection (e.g. `
 
 This is the part that matters most and the easiest to get wrong. A post that reads as AI-written defeats the entire point of the section. Concretely:
 
+### When Ed asks for a targeted fix, make only that fix
+
+This governs every revision pass, on a first draft or the tenth, on a blog post or a LinkedIn companion post. When Ed flags a specific problem, a typo, a grammar slip, a run-on sentence, an awkward transition, fix exactly that problem. Don't use the opening to also swap word choices, cut phrases, or "clean up" language nearby, even if a different phrasing would read more polished. His specific words, including casual asides, repeated intensifiers, particular figures ("a few years," not "five"), and phrases that don't sound like how an assistant would write, are the actual point, not incidental texture to smooth over. The goal of this entire skill is that a post sounds like Ed wrote it, not like it was cleaned up by an assistant, and rewriting his phrasing while "fixing" something else works directly against that.
+
+If a fix genuinely requires touching more than the flagged spot to work (splitting a run-on sentence means moving a period, for instance), touch only what the fix requires and preserve every word choice around it. When it's not obvious how far a requested fix should reach, ask rather than assume broader latitude than what was actually requested, in the same spirit as the "never assume" principle above, applied to Ed's own text instead of a post's subject matter. Ed is glad to go back and forth to refine wording together, so a narrower fix that leaves something imperfect nearby is never a problem, an unrequested rewrite is.
+
+Caught in practice on 2026-09-16: asked to "tighten" a run-on sentence in a LinkedIn companion post, the fix also dropped "Believe me," changed "in a few years" to "five years," and cut "if they haven't started to do so already", none of which were part of the actual problem (a missing article, "in few years", and one overloaded sentence). Redone to fix only those two things and leave the rest of Ed's wording untouched.
+
 - **No em-dashes. Zero. Not one, anywhere in the file** — not in the body, not in the title, not in the description. This is the single most common tell and the rule most likely to get missed by half-checking. Rewrite with a period, a comma, or parentheses instead. Before showing Ed any draft (new or revised), run `grep -n "—" <the file>` and fix every hit — don't rely on having "written carefully."
 - **No "it's not just X, it's Y" constructions**, and no other symmetric-contrast crutches leaned on for rhythm rather than meaning.
 - **No rule-of-three padding** — don't reach for a third adjective or example just to complete a triplet. Say it in one or two and stop.
