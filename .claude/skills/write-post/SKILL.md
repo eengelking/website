@@ -60,6 +60,14 @@ Before drafting, read one or two existing posts in the target collection (e.g. `
 
 This is the part that matters most and the easiest to get wrong. A post that reads as AI-written defeats the entire point of the section. Concretely:
 
+### When Ed asks for a targeted fix, make only that fix
+
+This governs every revision pass, on a first draft or the tenth, on a blog post or a LinkedIn companion post. When Ed flags a specific problem, a typo, a grammar slip, a run-on sentence, an awkward transition, fix exactly that problem. Don't use the opening to also swap word choices, cut phrases, or "clean up" language nearby, even if a different phrasing would read more polished. His specific words, including casual asides, repeated intensifiers, particular figures ("a few years," not "five"), and phrases that don't sound like how an assistant would write, are the actual point, not incidental texture to smooth over. The goal of this entire skill is that a post sounds like Ed wrote it, not like it was cleaned up by an assistant, and rewriting his phrasing while "fixing" something else works directly against that.
+
+If a fix genuinely requires touching more than the flagged spot to work (splitting a run-on sentence means moving a period, for instance), touch only what the fix requires and preserve every word choice around it. When it's not obvious how far a requested fix should reach, ask rather than assume broader latitude than what was actually requested, in the same spirit as the "never assume" principle above, applied to Ed's own text instead of a post's subject matter. Ed is glad to go back and forth to refine wording together, so a narrower fix that leaves something imperfect nearby is never a problem, an unrequested rewrite is.
+
+Caught in practice on 2026-09-16: asked to "tighten" a run-on sentence in a LinkedIn companion post, the fix also dropped "Believe me," changed "in a few years" to "five years," and cut "if they haven't started to do so already", none of which were part of the actual problem (a missing article, "in few years", and one overloaded sentence). Redone to fix only those two things and leave the rest of Ed's wording untouched.
+
 - **No em-dashes. Zero. Not one, anywhere in the file** — not in the body, not in the title, not in the description. This is the single most common tell and the rule most likely to get missed by half-checking. Rewrite with a period, a comma, or parentheses instead. Before showing Ed any draft (new or revised), run `grep -n "—" <the file>` and fix every hit — don't rely on having "written carefully."
 - **No "it's not just X, it's Y" constructions**, and no other symmetric-contrast crutches leaned on for rhythm rather than meaning.
 - **No rule-of-three padding** — don't reach for a third adjective or example just to complete a triplet. Say it in one or two and stop.
@@ -108,6 +116,10 @@ When a paragraph explains that something changed (a tool, a process, a habit), d
 ### Pre-empt the objection the reader is already forming
 
 If a post makes a claim the reader will obviously agree with on its own ("developers want to understand their code"), don't just assert it and move past it, that's the exact spot a skeptical reader stops trusting the piece, because it feels like the obvious counterargument got skipped. Name the obvious agreement out loud ("sure, we all do") and then pivot to the actual, less-obvious point it was hiding. That pivot, not the restated obvious point, is usually where the real argument of the post lives.
+
+### Earn a key term or metaphor before you lean on it
+
+If a post is going to hang its argument on a specific word or metaphor (a "moat," a "ladder," whatever the piece's central image is), don't reference what that term is doing or protecting before the post has actually shown the reader what it means. A sentence like "what exactly was the moat protecting?" only works if the reader already has a mental picture of the moat as a real, established thing, if it lands before that setup exists, the reader is asked to reason about a concept they haven't been given yet. Concretely: lay out the concrete detail first (what the barrier was, what it took, why it was hard) and only name or lean on the term once that picture is in place, ideally as the line that names what the reader just watched, not a reference to something still owed to them. This caught a real draft: a LinkedIn post asked "what exactly was the moat protecting?" in the same paragraph that was still establishing what the moat even was, before rewriting to lay out the barrier first and land "it feels like that moat is drying up" only once the setup existed. This applies to both formats, but LinkedIn's tighter length makes it easy to compress the setup and the payoff into the same paragraph without noticing the term got used before it was earned. When drafting or revising, check: does every use of the post's central metaphor come after the reader has already seen the concrete thing it refers to, not before?
 
 ### Hooks that earn attention
 
@@ -198,6 +210,7 @@ Run this after writing the file (or editing it in response to feedback) and befo
 7. **Voice fit**: reread the post's opening paragraph and closing paragraph back to back against the reference post pulled in Step 3. If they don't sound like they belong to the same author, revise before showing Ed, don't let him be the one to catch it.
 8. **Format rules**: TL;DR/Key Takeaways present only where the density or narrative-stakes rule above actually calls for them, written as raw HTML (not markdown bullets) if present; headers used only if the piece is genuinely multi-topic, not narrative beats; hook opens on the concrete/surprising thing, not a thesis statement or a recap sentence.
 9. **Paragraph length**: scan every paragraph for the split signal above (roughly five-plus sentences, or two distinct claims each carrying their own detail/citation). Split any that hit it before showing Ed the draft.
+10. **Term setup order**: if the piece leans on a central metaphor or term, check every use against "Earn a key term or metaphor before you lean on it" above, no reference to what the term is doing or protecting before the concrete setup for it exists on the page.
 
 ### The fact sweep
 
@@ -233,6 +246,8 @@ What's worth a second look after adding posts, not per post but periodically: wh
 Ed will sometimes want a short LinkedIn post to go with a blog or interests post, either linking straight to it or (commonly) posted first with the link following an hour or so later, to give the platform's own distribution a chance before sending readers off-site. Ask which he wants if it isn't already clear, and if he's holding the link back, don't add a placeholder link or a "link in comments" line unless he asks for one — just end the post the way he actually would (see below).
 
 The LinkedIn post is the "tell them what you're going to tell them" for the fuller piece, not a self-contained resolution of it. Its job is to hook and lead into the blog/interests post, both formats use tell-tell-tell, but LinkedIn is competing against every other post in someone's feed, so the hook has to work harder and land faster. That means the ending usually shouldn't resolve the argument the way a blog post's close would, a LinkedIn post that gives away the full payoff has talked the reader out of clicking through for it. Land on the idea or the stakes and stop, don't chase it with the conclusion the blog post exists to deliver.
+
+This compressed length makes it especially easy to reference a post's central metaphor before actually setting it up, watch for that per "Earn a key term or metaphor before you lean on it" above.
 
 This is not the blog/interests post compressed. It's a different, looser register, and treating it as "the same voice, just shorter" produces something that still reads stiff. Differences that actually matter, learned from Ed's own edits to a draft:
 
