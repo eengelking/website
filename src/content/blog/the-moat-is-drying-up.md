@@ -8,6 +8,11 @@ draft: false
 
 I built a working product this month in eight hours, spread across two evenings. A certification practice site with drills and mock exams, the kind of thing I would have paid a company real money for a few years ago. It works. I use it. If I wanted to sell access to it, I could.
 
+<figure>
+  <img src="/images/blog/moat-cert-dashboard.jpg" alt="A dark-mode certification practice dashboard called Readyband, showing a KCNA exam page with bank coverage at 100%, 40 questions answered, an exam blueprint broken down by domain with mastery percentages, and a readiness gauge reading 1 of 4 domains scored." />
+  <figcaption>Domain breakdowns, mastery tracking, a readiness gauge, this is the kind of dashboard a certification-prep vendor would charge a subscription for.</figcaption>
+</figure>
+
 That shouldn't be possible in eight hours. And the fact that it is tells you something bigger is happening to software than a productivity bump.
 
 <div class="tldr">
@@ -45,7 +50,7 @@ I think the discomfort I'm feeling is reasonable. It's not the same feeling as a
 
 The moat doesn't disappear. It moves. And I think it moves to data.
 
-Every major model has already ingested most of the readily available internet. Common Crawl, Wikipedia, GitHub, the open web, all of it has been scraped, filtered, and trained on repeatedly. The next round of gains has to come from somewhere, and I expect AI companies, OpenAI, Anthropic, Google, Microsoft, and whoever else is still standing, to start paying for it directly: licensing deals, human data-labeling contracts, arrangements to farm fresh, real-world data instead of recycling what's already been scraped.
+Most major models have already ingested the readily available internet. Meta's own paper on LLaMA lays out the mix: Common Crawl, GitHub, Wikipedia, books, ArXiv, all scraped, filtered, and folded into training ([Touvron et al., "LLaMA: Open and Efficient Foundation Language Models"](https://arxiv.org/abs/2302.13971)). The next round of gains has to come from somewhere, and I expect AI companies, OpenAI, Anthropic, Google, Microsoft, and whoever else is still standing, to start paying for it directly: licensing deals, human data-labeling contracts, arrangements to farm fresh, real-world data instead of recycling what's already been scraped.
 
 I'd be careful about the alternative, which is training on AI-generated data. Researchers already have a name for what happens when a model trains on its own output, or another model's output, across successive generations: model collapse, where the model gradually loses the rare, real-world detail in its data and drifts toward generic, repetitive output ([Shumailov et al., "AI models collapse when trained on recursively generated data," Nature](https://www.nature.com/articles/s41586-024-07566-y)). That's not a hypothetical risk. It's a documented one, and I don't think anyone serious wants to lean on synthetic data at scale until it's better understood.
 
