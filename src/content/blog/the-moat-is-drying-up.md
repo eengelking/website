@@ -3,7 +3,7 @@ title: "The Moat Is Drying Up"
 description: "Software used to take years of schooling and a decade of scars to be good at. AI has been slowing draining that moat, and I built a working certification-practice site in eight hours to prove it to myself."
 date: 2026-09-16
 tags: ["career", "ai"]
-draft: true
+draft: false
 ---
 
 I built a working product this month in eight hours, spread across two evenings. A certification practice site with drills and mock exams, the kind of thing I would have paid a company real money for a few years ago. It works. I use it. If I wanted to sell access to it, I could.
