@@ -18,7 +18,7 @@ That shouldn't be possible in eight hours. And the fact that it is tells you som
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
   <ul>
-    <li>Software used to be a moat: years of schooling, then years more of hands-on scars, before you could build anything real. AI has drained a lot of that moat, fast.</li>
+    <li>Software used to be a moat: years of schooling, then years more of hands-on experience, before a person had the expertise to build complex applications. AI has drained a lot of that moat, fast.</li>
     <li>I built a working certification-practice site with drills and mock exams in about eight hours over two evenings, something I'd previously have paid a company for.</li>
     <li>If software stops being the moat, something else has to be, and I think it's data, which is why companies that don't lock theirs down are handing away the only thing AI can't already generate on its own.</li>
   </ul>
@@ -28,19 +28,19 @@ That shouldn't be possible in eight hours. And the fact that it is tells you som
 
 A castle moat wasn't built for its beauty. It served as a strategic defense mechanism. It provided a time advantage and made attacks costly enough to deter most potential adversaries.
 
-Similarly, software development has always been a challenging field. Its moat has typically been related to education and experience. Years of formal education and practical experience were essential to overcome this formidable obstacle. Those who have successfully crossed it have become invaluable assets to organizations. In return, organizations are willing to pay a premium for the expertise and skills of these highly skilled professionals.
+Similarly, software development has always been a challenging field. Its moat has typically been related to education and experience. Years of formal education and practical experience were essential to overcome this formidable obstacle. Those who have successfully crossed it have become invaluable assets to organizations. In return, organizations have been willing to pay a premium for the expertise and skills of these highly skilled professionals.
 
 ## The moat is what's actually shrinking
 
-For the past year, I've been convinced that software's moat is almost dry, and it won't be long before it's completely dry. It's become almost trivial for a person with zero education or experience to build something that would've been impossible for them just two years ago. But it was more of a feeling than something I had personally experienced.
+For the past year, I've been leaning more and more towards the idea that software's moat is almost dry, and it won't be long before it's completely dry. It's become almost trivial for a single person with zero education or experience to build an incredibly complex project that would've been impossible for them just two years ago. But I had not yet experienced a scenario where I felt like something had changed in a substantial way.
 
-That changed when I built the certification site in such a short period of time. I wanted to sharpen my Kubernetes, security, and project management skills, so instead of buying a subscription to somebody else's practice platform, I decided to see if I could just build my own: real drills, real mock exams, tracking, all of it. It took two evenings, four hours each evening, for a total of eight hours. And it works, is functional, and most importantly, it's not a toy. It's the kind of tool existing organizations charge a monthly fee for.
+That changed when I built the aforementioned certification site in such a short period of time. My goal was simple: I wanted to sharpen my Kubernetes, security, and project management skills but wasn't interested in buying a subscription to somebody else's practice platform. I decided to see if I could just build my own, i.e., real drills, real mock exams, tracking, all of it. It took two evenings, four hours each evening, for a total of eight hours. It works, is fully functional, and highly modular with the ability to add more exams over time. It's the kind of practice exam platform that existing organizations charge a monthly fee for.
 
-That's not a story about me being clever to avoid paying money for a service. It's a story about what used to require capital, a team, and months now requiring an evening and a clear idea of what you want. Don't get me wrong: experienced engineers still have a real edge here, knowing what to build and how to check the output is still worth a great deal. But that edge is thinner than it was a year ago, and honestly, thinner than it was even a month ago, and I don't think it holds forever either. The water is evaporating quickly and it's just a matter of time before it's trivial to cross over the moat.
+That's not a story about me being clever to avoid paying money for a service. It's a story about what used to require capital, a team, and months of work now requiring an evening and a clear idea of what you want. Don't get me wrong: experienced engineers still have a real edge here, knowing what to build and how to check the output is still worth a great deal. But that edge is thinner than it was a year ago, and honestly, thinner than it was even a month ago, and I don't think it holds forever either. The water is evaporating quickly and it's just a matter of time before it's trivial to cross over the moat.
 
-But, to be perfectly clear here: I'm not saying this is all doom and gloom. The skill and experience don't disappear because the moat is dry, but it instead moves up a level, the same way it moved when compilers took over from hand-written machine instructions. What's different this time is how far up the ladder that move reaches. It's not just changing how developers work. It's removing the reason a lot of software companies could charge money in the first place.
+But, to be perfectly clear here: I'm not saying this is all doom and gloom. An engineer's skill and experience don't disappear because the moat is dry, but it instead moves up a level, the same way it moved when compilers took over from hand-written machine instructions. What's different this time is how far up the ladder that move reaches. It's not just changing how developers work. It's removing the reason a lot of software companies could charge money in the first place.
 
-I honestly believe a lot of the software companies we know, use, and sometimes love are in real danger of not being relevant any longer. I'm working on another project to see if specific companies are actually at risk here, but I'll leave that for a future post.
+I'm now of the opinion that engineers are not in danger, but honestly believe a lot of the software companies we know, use, and sometimes love are in real danger of not being relevant any longer. I'm working on another project to see if specific companies are actually at risk here, but I'll leave that for a future post.
 
 ## Why this makes people uncomfortable, including me
 
