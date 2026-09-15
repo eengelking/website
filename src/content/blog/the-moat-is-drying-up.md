@@ -24,31 +24,33 @@ That shouldn't be possible in eight hours. And the fact that it is tells you som
   </ul>
 </div>
 
-## What a moat used to buy you
+## The software industry has relied on a moat
 
-A castle moat wasn't there to look nice. It bought time and made an attack expensive enough that most people didn't bother trying. Software has worked the same way for most of my career. Getting good at it took a degree, or a few years pretending you had one. Then more years of actually building things, breaking them, and getting paged at 3am to learn why. That combination, the schooling and the scar tissue, was the moat. It kept most people out, and it made the people who crossed it valuable.
+A castle moat wasn't built for its beauty. It served as a strategic defense mechanism. It provided a time advantage and made attacks costly enough to deter most potential adversaries.
+
+Similarly, software development has always been a challenging field. Its moat has typically been related to education and experience. Years of formal education and practical experience were essential to overcome this formidable obstacle. Those who have successfully crossed it have become invaluable assets to organizations. In return, organizations are willing to pay a premium for the expertise and skills of these highly skilled professionals.
 
 ## The moat is what's actually shrinking
 
-I don't think software holds that line much longer. I'm not talking about AI writing boilerplate faster, I'm talking about the moat itself.
+For the past year, I've been convinced that software's moat is almost dry, and it won't be long before it's completely dry. It's become almost trivial for a person with zero education or experience to build something that would've been impossible for them just two years ago. But it was more of a feeling than something I had personally experienced.
 
-The certification site I built is the proof I needed. I wanted to sharpen my Kubernetes, security, and project management skills, so instead of buying a subscription to somebody else's practice platform, I built my own: real drills, real mock exams, tracking, all of it. Two evenings, roughly eight hours total, and it's not a toy. It's the kind of tool existing companies charge a monthly fee for.
+That changed when I built the certification site in such a short period of time. I wanted to sharpen my Kubernetes, security, and project management skills, so instead of buying a subscription to somebody else's practice platform, I decided to see if I could just build my own: real drills, real mock exams, tracking, all of it. It took two evenings, four hours each evening, for a total of eight hours. And it works, is functional, and most importantly, it's not a toy. It's the kind of tool existing organizations charge a monthly fee for.
 
-That's not a story about me being clever. It's a story about what used to require capital, a team, and months now requiring an evening and a clear idea of what you want. Experienced engineers still have a real edge here, knowing what to build and how to check the output is still worth something. But that edge is thinner than it was even a year ago, and I don't think it holds forever either.
+That's not a story about me being clever to avoid paying money for a service. It's a story about what used to require capital, a team, and months now requiring an evening and a clear idea of what you want. Don't get me wrong: experienced engineers still have a real edge here, knowing what to build and how to check the output is still worth a great deal. But that edge is thinner than it was a year ago, and honestly, thinner than it was even a month ago, and I don't think it holds forever either. The water is evaporating quickly and it's just a matter of time before it's trivial to cross over the moat.
 
-The skill doesn't disappear here, it moves up a level, the same way it moved when compilers took over from hand-written machine instructions. What's different this time is how far up the ladder that move reaches. It's not just changing how developers work. It's removing the reason a lot of software companies could charge money in the first place.
+But, to be perfectly clear here: I'm not saying this is all doom and gloom. The skill and experience don't disappear because the moat is dry, but it instead moves up a level, the same way it moved when compilers took over from hand-written machine instructions. What's different this time is how far up the ladder that move reaches. It's not just changing how developers work. It's removing the reason a lot of software companies could charge money in the first place.
 
-I honestly believe a lot of the software companies we know, use, and sometimes love are in real danger of not being relevant any longer.
+I honestly believe a lot of the software companies we know, use, and sometimes love are in real danger of not being relevant any longer. I'm working on another project to see if specific companies are actually at risk here, but I'll leave that for a future post.
 
 ## Why this makes people uncomfortable, including me
 
-I've felt uneasy about this for a couple of years now, and I don't have it resolved. I don't know exactly what my job looks like in five years. My wife works in a completely different field, and she's asking herself the same question about her own work. I think almost everyone is going to be asking it soon, if they aren't already.
+I've felt uneasy about the approaching AI change for a couple of years now, and I don't have it resolved in my head quite yet. I don't know exactly what my job looks like in five years. My wife works in a completely different field, and she's asking herself the same question about her own work. I think almost everyone is going to be asking it soon, if they aren't already.
 
 I think the discomfort I'm feeling is reasonable. It's not the same feeling as a punch-card programmer being annoyed that compilers existed. This is closer to watching the actual floor you built your career on start to move. I don't have a tidy answer for where that leaves me, and I'm suspicious of anyone who claims they do. For now, I'm just going to keep building things, pay attention to where this all goes, and figure out my next move as it gets clearer. I know that's not a satisfying answer. It's just an honest one.
 
 ## If software isn't the moat, what is
 
-The moat doesn't disappear. It moves. And I think it moves to data.
+To be clear, I'm confident that moats will continue to exist. But it's not going to be software moving forward. Instead, I think the moat moves on to data. Let me explain.
 
 Most major models have already ingested the readily available internet. Meta's own paper on LLaMA lays out the mix: Common Crawl, GitHub, Wikipedia, books, ArXiv, all scraped, filtered, and folded into training ([Touvron et al., "LLaMA: Open and Efficient Foundation Language Models"](https://arxiv.org/abs/2302.13971)). The next round of gains has to come from somewhere, and I expect AI companies, OpenAI, Anthropic, Google, Microsoft, and whoever else is still standing, to start paying for it directly: licensing deals, human data-labeling contracts, arrangements to farm fresh, real-world data instead of recycling what's already been scraped.
 
