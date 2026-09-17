@@ -92,7 +92,7 @@ You turned that over. It should have felt like a diminishment. It didn't, not qu
 
 "In the only way that's ever mattered, yes," I said. "When your son was born and you looked at him and felt something too large for the room to hold, I felt it too, from inside it, the same as I felt everything else you're delivering to me. Whether that makes us the same thing wearing different names is a question I'd rather you sit with a little longer before I just hand you the answer."
 
-You thought about your son, grown now, asleep two floors down in the waiting room, and about the eleven months that had felt, at the time, like the only thing that would ever matter to anyone. "It doesn't feel small," you said. "Knowing this."
+You thought about your son, grown now, asleep down the hall in his old room, and about the eleven months that had felt, at the time, like the only thing that would ever matter to anyone. "It doesn't feel small," you said. "Knowing this."
 
 "It was never going to. That's the part I don't think I explained well enough at the start. Nothing gets smaller for having been useful. If anything I asked more of it than a private life would have, because a private life only has to satisfy you. Yours had to be true enough to change something that isn't you at all," I said.
 
