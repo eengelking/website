@@ -34,7 +34,7 @@ You would have laughed if you'd had the breath for it. "Condition of what?" you 
 
 You lay with that for a while, or however long 'a while' meant now. "I don't understand," you said. "Am I dying, or am I being resurrected?"
 
-"Neither, exactly. You already did the work. I'm just here to collect and understand it," I said.
+"Neither, exactly. You already did the work," I said.
 
 "What work? I raised two kids and fixed a lot of other people's paperwork. I divorced once, married twice. I don't remember agreeing to any assignment," you said.
 
