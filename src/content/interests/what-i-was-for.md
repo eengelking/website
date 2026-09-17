@@ -1,6 +1,6 @@
 ---
 title: "What I Was For"
-description: "A short piece of fiction, an homage to Andy Weir's The Egg, following a dying woman's last conversation with a voice that turns out to have been closer to her than she ever realized."
+description: "A short piece of fiction, an homage to Andy Weir's The Egg, asking whether a life can matter without anyone, human or divine, ever bearing witness to it."
 date: 2026-09-16
 tags: ["personal", "fiction"]
 draft: false
