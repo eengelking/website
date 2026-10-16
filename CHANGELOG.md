@@ -19,6 +19,7 @@ The site has no tagged releases yet. Everything so far sits under Unreleased, gr
 - Blog posts on diskless encryption (NBDE), a live-cluster CI/CD pipeline, CVSS base scores versus environmental scores, the CIA triad, a race condition, IOPS, untested backups, and moving from punch cards to prompts, among others. (#3, #4, #5, #7, #23)
 - Interests posts: a deja vu thought experiment and "What I Was For". (#14, #31)
 - "The Moat Is Drying Up" blog post, first as a draft and then published. (#26, #28)
+- "Podium: A Control Room for Claude Code" blog post, the launch announcement for Podium, with three screenshots.
 - Skills categories for UX/UI Design and Research, and skills for MCP, RAG, self-hosted model tooling, and rapid AI prototyping. (#11, #12)
 - Dedicated `/projects` page with search. (#21)
 - Portrait photo in the hero. (#22)
