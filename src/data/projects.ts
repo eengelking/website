@@ -91,4 +91,11 @@ export const projects: Project[] = [
     technologies: ['Claude Code', 'Plugin', 'Shell'],
     link: 'https://github.com/eengelking/skills',
   },
+  {
+    name: 'Podium',
+    description:
+      "A live fleet console for Claude Code: every session, agent, plan, cost, and context window on one machine in a single browser tab. Sessions appear within about two seconds of their first prompt via a reporter mod, with per-model cost estimates, context blowout counts, failure reasons, and git branch or worktree. Runs as a Podman container or standalone service, with per-person tokens for shared use.",
+    technologies: ['TypeScript', 'React', 'Node.js', 'Express', 'SQLite', 'Podman', 'Claude Code'],
+    link: 'https://github.com/eengelking/podium',
+  },
 ];
