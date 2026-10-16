@@ -8,6 +8,11 @@ draft: false
 
 A Claude Code session would be sitting at a question or a permission prompt, waiting on me, and I wouldn't know. I'd be in another window or another session, and the time it sat there was simply gone. Add a few orchestrators, each spawning its own subagents and forks, and I was spending more effort figuring out what was happening than getting anything done.
 
+<figure>
+  <img src="/images/blog/podium/podium-chaos.png" alt="The Podium fleet page in dark mode with nine orchestrator cards under a row of tiles reading 9 orchestrators live, 11 subagents running, 8 context blowouts, 16 of 36 plan steps done, $30.89 estimated cost today and 14.26M tokens in the last minute. One card has a red border and a context bar at 95% with a 6x blowout badge, and its grid of subagent squares shows many failures. An activity feed runs down the right side." />
+  <figcaption>Mostly simulated sessions with the failures and context blowouts turned up, the kind of thing I'd otherwise be hunting for across terminals.</figcaption>
+</figure>
+
 So I built something to show me. It's called Podium, it's free, and this is the launch post.
 
 <div class="tldr">
@@ -53,7 +58,7 @@ So I built my own mod, podium-reporter, and a central website called Podium. The
 
 <figure>
   <img src="/images/blog/podium/podium-fleet.png" alt="The Podium fleet page in dark mode. Three orchestrator cards sit under a row of tiles showing orchestrators live, subagents running, context blowouts, plan steps done, estimated cost today and tokens in the last minute. One card is running and two are amber and read Waiting for your input, each with a Respond button. An activity feed runs down the right side." />
-  <figcaption>One running session and two amber ones waiting on a person, each with a Respond button, which is the thing I used to find out about by accident.</figcaption>
+  <figcaption>One running orchestrator session (green) and two waiting orchestrators (amber). Each waiting orchestrator has a Respond button to allow a user to reply directly from the web interface.</figcaption>
 </figure>
 
 It works for several developers at once. Each person gets their own token from Podium's Admin page, and once their sessions report, the console can group the wall by person. One tab can show a whole team's Claude Code work.
