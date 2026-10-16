@@ -27,6 +27,7 @@ The site has no tagged releases yet. Everything so far sits under Unreleased, gr
 - `write-post` skill for drafting blog and interests posts, refined over time with TL;DR and Key Takeaways callouts, hooks, screenshots, a fact sweep, LinkedIn companion posts, and notes on voice. (#2, #7, #19, #24, #27, #29, #30)
 - `CLAUDE.md` documenting the Git workflow, including branch cleanup after a merge. (#10, #13, #16)
 - Claude Code tag on localscore, the K8s VM operator, the terminal proxy, and Readyband. (#20)
+- Click-to-enlarge on images in blog and interests posts: a blurred-backdrop modal that closes with the X, Esc, or a click outside the image.
 
 ### Changed
 

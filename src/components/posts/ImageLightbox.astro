@@ -1,0 +1,143 @@
+---
+// Click-to-enlarge for images in a post body. Drop it once per post layout,
+// after the element with class "post-body". Uses a native <dialog> so Esc,
+// focus trapping, and focus return come from the browser.
+---
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <button class="lightbox-close" type="button" aria-label="Close image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+  </button>
+  <img class="lightbox-img" alt="" />
+</dialog>
+
+<script>
+  const dialog = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const big = dialog?.querySelector<HTMLImageElement>('.lightbox-img');
+
+  if (dialog && big) {
+    const open = (img: HTMLImageElement) => {
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+    };
+
+    // Images wrapped in a link keep their link behavior.
+    const images = document.querySelectorAll<HTMLImageElement>('.post-body img');
+    images.forEach((img) => {
+      if (img.closest('a')) return;
+      img.classList.add('zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', img.alt ? `Enlarge image: ${img.alt}` : 'Enlarge image');
+      img.addEventListener('click', () => open(img));
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(img);
+        }
+      });
+    });
+
+    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+    // The dialog fills the viewport, so a click on it (not the image) is a backdrop click.
+    dialog.addEventListener('click', (e) => {
+      if (e.target !== big) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      big.removeAttribute('src');
+    });
+  }
+</script>
+
+<style is:global>
+  .post-body img.zoomable {
+    cursor: zoom-in;
+    transition: border-color 0.15s ease;
+  }
+
+  .post-body img.zoomable:hover {
+    border-color: var(--color-accent);
+  }
+
+  .post-body img.zoomable:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  .lightbox {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 3.5rem var(--space-3) var(--space-3);
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(12, 15, 19, 0.72);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .lightbox-img {
+    max-width: min(100%, 1400px);
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--color-surface-raised);
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .lightbox-close:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .lightbox-close:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  .lightbox-close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lightbox[open] .lightbox-img {
+      animation: lightbox-in 0.18s ease;
+    }
+
+    @keyframes lightbox-in {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  }
+</style>
