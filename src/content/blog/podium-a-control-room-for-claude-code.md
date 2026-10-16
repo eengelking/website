@@ -2,7 +2,7 @@
 title: "Podium: A Control Room for Claude Code"
 description: "When you run a handful of Claude Code orchestrators, each with its own subagents and forks, you lose track of who is working and who is waiting on you. I built Podium, a free, open source console that puts all of it in one browser tab and lets you answer from there."
 date: 2026-10-16
-tags: ["ai", "open-source", "security"]
+tags: ["ai", "claude-code", "podium", "open-source", "security"]
 draft: false
 ---
 
@@ -43,7 +43,7 @@ That's a reduced view, and it was never going to be the single pane of glass I w
 
 ## Then came mods
 
-A mod is a plugin made of JavaScript or TypeScript event handlers. Claude Code calls a handler when something happens, like a tool call or a submitted prompt, and the handler can watch the event, change it, or take it over. Unlike a settings hook, a mod runs inside Claude Code, so it can also draw its own interface and see each request's token usage ([Claude Code Docs, "Mods overview"](https://code.claude.com/docs/en/plugins/mods/overview)).
+A mod is a plugin made of JavaScript or TypeScript event handlers. Claude Code calls a handler when something happens, like a tool call or a submitted prompt, and the handler can watch the event, change it, or take it over. Unlike a settings hook, a mod runs inside Claude Code, so it can also draw its own interface and see each request's token usage ([Claude Code Docs, "Mods overview"](https://code.claude.com/docs/en/plugins/mods/overview)). Some of Claude Code's own features, such as `/diff`, are built as mods, and their source is public ([anthropics/claude-code, `mods`](https://github.com/anthropics/claude-code/tree/main/mods)).
 
 I realized right away that this was what I'd been waiting for. It meant I could see which orchestrators were running, their subagents and forks, the skills they loaded, and what it all cost.
 
