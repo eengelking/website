@@ -16,6 +16,8 @@ Both follow the same list and detail pattern. `blog/index.astro` pairs with `blo
 
 Both list pages use a shared `PostList` React island (`src/components/posts/PostList.tsx`) for search. It is a single text input with no tag-chip UI. Quoted phrases match as exact substrings and unquoted words are separate AND'd terms (see `src/utils/searchQuery.ts`, shared with `SkillSearch.tsx`). Only the post title is a real `<a>`. The rest of the row (date, description, tag buttons) stays outside the anchor so text remains selectable and tag buttons are not nested inside a link, which is invalid HTML. Tag buttons set the search box's query instead of navigating.
 
+Both detail pages render `ImageLightbox.astro` (`src/components/posts/`) after the post body. A small inline script makes every `.post-body img` that isn't inside a link focusable and clickable, and opens it in a native `<dialog>` with a blurred backdrop. The `<dialog>` gives Esc, the focus trap, and focus return for free. The enlarged image is the same file scaled by CSS, not a separate asset. It closes on the X, Esc, or a click outside the image. New layouts that render post bodies need the component too, or their images won't enlarge.
+
 ## Astro and React split
 
 `.astro` files are the default for static sections (Hero, About, Nav, ProjectGrid, ContactCTA). React (`.tsx`) is for components that need client-side interactivity or animation: `AboutReveal`, `StatStrip`, `SkillSearch`, `Timeline` and `TimelineNode`. Those use Framer Motion for scroll-triggered and in-view animation. Check existing `useInView` and `whileInView` usage before adding new motion behavior. New static content stays in `.astro`; reach for React only when you need state, effects, or hooks.
