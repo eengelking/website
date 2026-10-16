@@ -58,7 +58,7 @@ So I built my own mod, podium-reporter, and a central website called Podium. The
 
 <figure>
   <img src="/images/blog/podium/podium-fleet.png" alt="The Podium fleet page in dark mode. Three orchestrator cards sit under a row of tiles showing orchestrators live, subagents running, context blowouts, plan steps done, estimated cost today and tokens in the last minute. One card is running and two are amber and read Waiting for your input, each with a Respond button. An activity feed runs down the right side." />
-  <figcaption>One running session and two amber ones waiting on a person, each with a Respond button, which is the thing I used to find out about by accident.</figcaption>
+  <figcaption>One running orchestrator session (green) and two waiting orchestrators (amber). Each waiting orchestrator has a Respond button to allow a user to reply directly from the web interface.</figcaption>
 </figure>
 
 It works for several developers at once. Each person gets their own token from Podium's Admin page, and once their sessions report, the console can group the wall by person. One tab can show a whole team's Claude Code work.
