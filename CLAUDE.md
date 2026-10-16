@@ -32,7 +32,7 @@ The operator uses shorthand in place of typing a full request out. Case-insensit
 - Re-invoke `/code-review` a second time on the same diff "to confirm" a fix. There is no defined stopping rule for a fix, review, fix cycle, and the review skill's own finder/verifier fan-out is not guaranteed to converge on a repeat run. It can spawn a large batch of sub-agents and stall indefinitely. Verify fixes by running the project's own checks directly instead (see the Review (pre-PR) row below). If that fails, stop and ask rather than looping back into another review round.
 - Hardcode page copy in a component. Edit the data module under `src/data/` instead.
 - Put Ed's personal email or compensation figures anywhere in site content. `scripts/check-sensitive.sh` fails the deploy if they reach `dist/`, and its `DENYLIST` array is the list of what is off-limits.
-- Commit a blog or interests entry without thinking about `draft`. The field defaults to `false`, so an entry with no `draft` line goes live on the next deploy.
+- Forget that new blog and interests entries publish by default. `draft` is `false` unless set, so an entry committed with no `draft` line, or with `draft: false`, goes live on the next deploy. Only set `draft: true` when Ed asks for a draft.
 
 ## Always Branch First
 
@@ -82,10 +82,12 @@ Order of operations for any tracked change. The policy is the invariant that hol
 | Pre-PR gate (this repo) | For any change that affects the build, run `npm run build` and then `./scripts/check-sensitive.sh dist` locally. Push to `main` deploys immediately and the sensitive-content check is the only automated gate in CI, so treat this as a gate, not an afterthought. | `development-commands` |
 | Develop → PR | Changes land via PR; the user reviews and merges. Once a change is complete, has been through pre-PR review above, and passes its relevant checks, commit, push, and open the PR without waiting for a separate go-ahead. That is normal completion of the work, not a separate action to confirm. Commit as you go rather than batching everything into one commit at the end. Opening a PR is still a stopping point, not a launchpad. It doesn't authorize starting the next unit of work unprompted, and merging remains the user's call, always. | `github-pr-merge` |
 | Merge & cleanup | A branch is deleted only after its merge is confirmed with `gh pr view`, not assumed from a chat message. Delete both the local and remote copy, since GitHub doesn't auto-delete on merge in this repo. Deleting the remote branch is a shared-state change, so confirm with Ed first. | `github-pr-merge` |
-| Release (if applicable) | A deliberate step after a PR merges, never an automatic side effect of merging. This site doesn't cut releases. | `github-release` |
+| Release (if applicable) | A deliberate step after a PR merges, never an automatic side effect of merging. This site will have releases but doesn't yet. Ask before cutting the first one. | `github-release` |
 | Dangerous git actions | See Do Not. A prior approval doesn't carry forward to the next instance. | `git-safety` |
 | Committing | Review staged changes for anything sensitive before committing, especially in files that don't look like they'd contain any. If a secret is committed anyway, treat it as compromised and flag it to the user for rotation rather than just removing it from the latest commit. | `git-safety` |
 | Remote access | The `gh` CLI is available and authenticated. Use it for PRs, issues, and other GitHub operations rather than assuming it's missing. If a `git push`/`fetch`/`clone` fails with an SSH error (e.g. `git@github.com: Permission denied (publickey)`), this environment's SSH key isn't set up for GitHub. Switch the affected remote to HTTPS (`git remote set-url origin https://github.com/<owner>/<repo>.git`) and retry, rather than treating it as a dead end or asking the user to fix SSH first. | none |
+
+**Versioning:** If this repo opts into `spec-writing`'s Staged-DAG weight class, add a line here mapping each stage gate to the release version it produces (e.g. G-0 → `v0.1.0`, G-1 → `v0.2.0`, …). That mapping is the one fact specific to this repo. The mechanics (independently verifying a gate before treating it as passed, what to bump and where, tagging) are `github-release`'s and `spec-writing`'s job to know, not this file's. Load them when a gate task merges rather than re-deriving the steps here. Projects using Flat or Phased spec classes, or no `spec-writing` spec at all, don't need this row.
 
 ## Issue Management
 
@@ -104,7 +106,7 @@ Order of operations for any tracked change. The policy is the invariant that hol
 
 The `write-post` skill is the workflow for any blog or interests post, and it should trigger when Ed hands over bullets. Ed's voice rules and the interview steps live there, not here. Two rules sit above the skill because they protect the live site:
 
-- Whether a new entry ships as a draft or goes live is set by the skill and Ed's say-so. Confirm with Ed before flipping `draft` on an existing entry, since that is a visible change.
+- New entries are written with `draft: false` by default. Only use `draft: true` when Ed asks for it. Confirm with Ed before flipping `draft` on an existing entry, since that is a visible change.
 - Post bodies get the same sensitive-content discipline as everything else (see Do Not).
 
 ## Commands
