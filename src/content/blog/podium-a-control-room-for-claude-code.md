@@ -8,6 +8,11 @@ draft: false
 
 A Claude Code session would be sitting at a question or a permission prompt, waiting on me, and I wouldn't know. I'd be in another window or another session, and the time it sat there was simply gone. Add a few orchestrators, each spawning its own subagents and forks, and I was spending more effort figuring out what was happening than getting anything done.
 
+<figure>
+  <img src="/images/blog/podium/podium-chaos.png" alt="The Podium fleet page in dark mode with nine orchestrator cards under a row of tiles reading 9 orchestrators live, 11 subagents running, 8 context blowouts, 16 of 36 plan steps done, $30.89 estimated cost today and 14.26M tokens in the last minute. One card has a red border and a context bar at 95% with a 6x blowout badge, and its grid of subagent squares shows many failures. An activity feed runs down the right side." />
+  <figcaption>Mostly simulated sessions with the failures and context blowouts turned up, the kind of thing I'd otherwise be hunting for across terminals.</figcaption>
+</figure>
+
 So I built something to show me. It's called Podium, it's free, and this is the launch post.
 
 <div class="tldr">
