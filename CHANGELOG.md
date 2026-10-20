@@ -44,6 +44,7 @@ The site has no tagged releases yet. Everything so far sits under Unreleased, gr
 - `actions/checkout` and `actions/setup-node` bumped to v5. (#17)
 - `CLAUDE.md` rebuilt on the standard from `eengelking/agent`, with architecture notes moved to `docs/ARCHITECTURE.md` and a staging file added at `docs/ISSUES.md`. (#35)
 - `linkedin/` scratch directory ignored so local post drafts stay out of the repo. (#25)
+- Podium v1.2.0 post TL;DR now notes that v1.2.1 has been released, with links to both release pages.
 
 ### Fixed
 
