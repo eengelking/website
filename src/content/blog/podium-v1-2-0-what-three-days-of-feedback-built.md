@@ -16,7 +16,7 @@ I published the Podium launch post on October 16. Three days later I shipped v1.
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
   <ul>
-    <li>Update: <a href="https://github.com/eengelking/podium/releases/tag/v1.2.1">v1.2.1</a> has been released since this post was written. This post covers <a href="https://github.com/eengelking/podium/releases/tag/v1.2.0">v1.2.0</a>, so see the v1.2.1 release notes for what changed after it.</li>
+    <li>Update: <a href="https://github.com/eengelking/podium/releases/tag/v1.2.1">v1.2.1</a>, followed by <a href="https://github.com/eengelking/podium/releases/tag/v1.2.2">v1.2.2</a>, has been released since this post was written. This post covers <a href="https://github.com/eengelking/podium/releases/tag/v1.2.0">v1.2.0</a>, so see the v1.2.1 and v1.2.2 release notes for what changed after it.</li>
     <li>v1.2.0 came three days after the launch post and is mostly the feedback list: a Board that updates live, session names on the cards, the right project and branch on a moved session, and a safe way to fork a session.</li>
     <li>One person's orchestrators can now message each other, off by default and gated by rights the owner sets. A Traffic page shows who is talking and what they said.</li>
     <li>SonarCloud and CodeQL are now part of the release pipeline, and the findings were fixed before this version shipped.</li>
@@ -72,12 +72,13 @@ A few smaller changes:
 
 ## Try it
 
-Podium is free and open source under the MIT license, at [github.com/eengelking/podium](https://github.com/eengelking/podium). The full changelog is on the [v1.2.0 release page](https://github.com/eengelking/podium/releases/tag/v1.2.0). If something is missing, open an issue. Three days is how long the last list took.
+Podium is free and open source under the MIT license, at [github.com/eengelking/podium](https://github.com/eengelking/podium). The latest release is [v1.2.2](https://github.com/eengelking/podium/releases/tag/v1.2.2), and its release page has the full changelog. If something is missing, open an issue. Three days is how long the last list took.
 
 <div class="summary">
   <p class="summary-label">Key Takeaways</p>
   <ul>
-    <li>v1.2.0 shipped three days after the launch post, and most of it came from feedback: a live Board, session names and project details on cards, and a safe fork command.</li>
+    <li><a href="https://github.com/eengelking/podium/releases/tag/v1.2.0">v1.2.0</a> shipped three days after the launch post, and most of it came from feedback: a live Board, session names and project details on cards, and a safe fork command.</li>
+    <li><a href="https://github.com/eengelking/podium/releases/tag/v1.2.1">v1.2.1</a> and <a href="https://github.com/eengelking/podium/releases/tag/v1.2.2">v1.2.2</a> have been released since.</li>
     <li>A fork is a copy of the conversation that leaves the original alone. It shares the directory, so file edits in it are real.</li>
     <li>Orchestrator messaging is off by default, limited to one person's own orchestrators, redacts secrets before text leaves a machine, and asks a person to approve after 10 round trips.</li>
     <li>SonarCloud and CodeQL now gate releases, and their findings were fixed before v1.2.0 shipped, apart from one CodeQL false positive left to dismiss.</li>
