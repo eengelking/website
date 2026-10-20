@@ -16,6 +16,7 @@ I published the Podium launch post on October 16. Three days later I shipped v1.
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
   <ul>
+    <li>Update: <a href="https://github.com/eengelking/podium/releases/tag/v1.2.1">v1.2.1</a> has been released since this post was written. This post covers <a href="https://github.com/eengelking/podium/releases/tag/v1.2.0">v1.2.0</a>, so see the v1.2.1 release notes for what changed after it.</li>
     <li>v1.2.0 came three days after the launch post and is mostly the feedback list: a Board that updates live, session names on the cards, the right project and branch on a moved session, and a safe way to fork a session.</li>
     <li>One person's orchestrators can now message each other, off by default and gated by rights the owner sets. A Traffic page shows who is talking and what they said.</li>
     <li>SonarCloud and CodeQL are now part of the release pipeline, and the findings were fixed before this version shipped.</li>
