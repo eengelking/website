@@ -20,6 +20,7 @@ The site has no tagged releases yet. Everything so far sits under Unreleased, gr
 - Interests posts: a deja vu thought experiment and "What I Was For". (#14, #31)
 - "The Moat Is Drying Up" blog post, first as a draft and then published. (#26, #28)
 - "Podium: A Control Room for Claude Code" blog post, the launch announcement for Podium, with four screenshots.
+- "Podium v1.2.0: What Three Days of Feedback Built" blog post, the follow-up announcing Podium v1.2.0, with four screenshots.
 - Skills categories for UX/UI Design and Research, and skills for MCP, RAG, self-hosted model tooling, and rapid AI prototyping. (#11, #12)
 - Dedicated `/projects` page with search. (#21)
 - Portrait photo in the hero. (#22)
