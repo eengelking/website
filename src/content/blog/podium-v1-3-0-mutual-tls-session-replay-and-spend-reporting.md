@@ -3,7 +3,7 @@ title: "Podium v1.3.0: Mutual TLS, Session Replay and Spend Reporting"
 description: "Podium v1.3.0 replaces the reporter's token over plain HTTP with a certificate it proves on every connection, lets you record and replay a session to see what went wrong, and adds Admin reporting that shows where your Claude spend is going and where it's headed."
 date: 2026-10-22
 tags: ["ai", "claude-code", "podium", "open-source", "security"]
-draft: true
+draft: false
 ---
 
 Until now, a Podium reporter sent its token in a header over plain HTTP. Anyone on the path between a laptop and the server could read it, and anyone who read it could use it. For a tool that carries your prompts, your plans and the answers you send back, that was the thing I most wanted to fix. v1.3.0 fixes it with mutual TLS, and the hard part wasn't turning TLS on. It was changing a certificate without breaking everyone already holding the old one.
@@ -26,7 +26,7 @@ With TLS on, the server makes its own CA and serving certificate and serves HTTP
 
 The server maps the certificate to a person by fingerprint, and the report's `userName` still has to match that person. Revoking the certificate, the token, or both are separate actions, and the server checks revocation on every request.
 
-One workaround is worth knowing about. The reporter is a Claude Code mod, and the mod's HTTP call accepts no CA or client certificate. So each session starts a small Node helper, and the mod talks to it over a Unix socket. It needs `node` on the machine, and macOS and Linux are the supported platforms.
+One workaround is worth knowing about. The reporter is a Claude Code mod, and the mod's HTTP call accepts no CA or client certificate. So each session starts a small Node helper, and the mod talks to it over a Unix socket. It needs `node` on the machine, and macOS and Linux are the supported platforms. I will be submitting a request to Anthropic's Claude Code team to make the required change to the harness so that the helper is no longer required. I also have an open issue to support Windows machines in an upcoming release.
 
 ## Rotating a certificate without breaking anyone
 
@@ -45,7 +45,7 @@ An Admin Certificates page shows what expires and when, and a pill in the header
 
 ## The fallback
 
-This is new, and a security change that locks people out is a bad trade. So the token path doesn't go away. Reporters over HTTP are an Admin switch. It's on for an existing install and off for a fresh install that enables TLS. If the certificate path fails for someone, the token method they already had keeps working until the Admin turns it off.
+This is new, and a security change that locks people out is a bad trade. So the token path doesn't go away. Reporters over HTTP are an Admin switch. It's on for an existing install and off for a fresh install that enables TLS. If the certificate path fails for someone, the token method they already had keeps working until the Admin turns it off. The token authentication will be deprecated in a future release, but for now, it stays put. Just be aware that any traffic sent using this method is over HTTP and is not secure.
 
 ## Record a session, then replay it
 
@@ -65,13 +65,13 @@ The replay is a page with a position slider and a Jump to next failure button. I
 
 Forking a session, from v1.2.0, lets you question an agent without touching the original ([my v1.2.0 post](/blog/podium-v1-2-0-what-three-days-of-feedback-built)). Replay is the other half, because it shows what the agent did without asking it anything.
 
-It's the most Podium has ever kept of a conversation, so it takes three yes answers:
+It's the most Podium has ever kept of a conversation, so it takes three `yes` answers:
 
 - The Admin turns on the Session recording feature flag, which needs the server's auth on.
 - The session's owner, or an Admin, chooses to record that session.
 - The reporter's `sessionRecording` option is on.
 
-Everyone sees that a session is recording and who started it, and nobody can hide that. Secrets are replaced on the machine before anything is sent, which is best effort and not a guarantee. A recording is kept 6 hours by default, up to 7 days. The model's thinking text isn't captured.
+Everyone sees that a session is recording and who started it, and nobody can hide that. Secrets are replaced on the machine before anything is sent, which is best effort and not a guarantee. A recording is kept 6 hours by default, up to 7 days. The model's thinking text isn't captured, as that is a limitation of the Claude Code harness. If the mod API ever allows for this in the future, I will be sure to include it in a future update as it would be VERY useful for tracing and troubleshooting.
 
 ## Where the spend goes
 
@@ -86,12 +86,18 @@ The Spend page breaks cost down by person. Its projection takes a straight run r
 
 ## Also in this release
 
+- Docker support in `podiumctl`, a feature improvement directly from the Docker engineering team!
 - Admins can keep the agent Activity feed for a set time, filter it on a Stored activity page, and delete it. It's off by default.
 - A Bash row in the Activity feed opens to the whole command and its output, with its exit code and whether the call is running, finished or never reported. Collecting output is an Admin flag and is off by default.
+- An Orchestrator page has its own address
+- Users can pin specific sessions on the fleet page, which is really useful if a user wants to keep a session in a specific location on the wall.
+- The ability to collapse/open the Plan/Files object in the Orchestrator page, as well as the KPIs on the Kanban board.
+- Improvements to the diff modal in the Orchestrator page, including wrapping of text.
+- Tons of security improvements! If CodeQL and/or Sonar found it, it was fixed.
 
 ## Try it
 
-Podium is free and open source under the MIT license, at [github.com/eengelking/podium](https://github.com/eengelking/podium). The [releases page](https://github.com/eengelking/podium/releases) has the full changelog for v1.3.0. If the certificate path doesn't work on your setup, open an issue, and in the meantime the token method is still there.
+Podium is free and open source under the MIT license, at [github.com/eengelking/podium](https://github.com/eengelking/podium). The [v1.3.0 release page](https://github.com/eengelking/podium/releases/tag/v1.3.0) has the full changelog. If the certificate path doesn't work on your setup, open an issue, and in the meantime the token method is still there.
 
 <div class="summary">
   <p class="summary-label">Key Takeaways</p>
