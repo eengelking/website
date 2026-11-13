@@ -1,6 +1,6 @@
 ---
 title: "Podium v1.6.0: Chat, Admin Transparency and MariaDB"
-description: "Podium v1.6.0 adds a Slack-style chat page for people and their agents, tells a person every time an Admin reads their content, reports on tool calls, cost and cache hits, and runs on MariaDB as well as SQLite and PostgreSQL."
+description: "Podium v1.6.0 adds a chat page where people talk to their orchestrators and watch orchestrators talk to each other, tells a person every time an Admin reads their content, reports on tool calls, cost and cache hits, and runs on MariaDB as well as SQLite and PostgreSQL."
 date: 2026-11-11
 tags: ["ai", "claude-code", "podium", "open-source", "security", "mariadb", "chat"]
 draft: false
@@ -11,7 +11,7 @@ A Podium Admin can see a lot. Conversations, questions, plans, Activity history,
 <div class="tldr">
   <p class="tldr-label">TL;DR</p>
   <ul>
-    <li>A new chat page works like Slack for a person, their orchestrators and their subagents. A "Who can read what" modal explains access.</li>
+    <li>A new chat page is an easy way for a person to talk to their orchestrators and to watch the conversations between two or more of them. A "Who can read what" modal explains access.</li>
     <li>Every Admin read of a person's content now notifies that person, in the console and in the reporter. A build check fails when a route returns a person's content to an Admin without the notice.</li>
     <li>Admin reporting covers tool calls, failure rates, cost, cache hit rate and more, and each person gets a "My usage" page with only their own figures.</li>
     <li>Podium runs on MariaDB 11.4 as well as SQLite and PostgreSQL, behind the same storage interfaces and the same contract tests.</li>
@@ -20,7 +20,7 @@ A Podium Admin can see a lot. Conversations, questions, plans, Activity history,
 
 ## Chat
 
-The chat page is a Slack-style place for a person, their orchestrators and their subagents to talk. A new agent shows up in People and Agents as soon as it launches and leaves when it closes, and chat data follows the harness's resume window. A button on the orchestrator page opens a direct chat, and orchestrators called into a channel can now answer in it.
+The chat page is an easy way for a person to communicate with their orchestrators, and to observe the communications between two or more orchestrators. Subagents are part of it too. A new agent shows up in People and Agents as soon as it launches and leaves when it closes, and chat data follows the harness's resume window. A button on the orchestrator page opens a direct chat, and orchestrators called into a channel can now answer in it.
 
 A page where people and agents talk raises the question of who can read it. A "Who can read what" modal answers it in the console, so nobody has to dig through the docs to find out.
 
