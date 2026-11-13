@@ -22,6 +22,11 @@ A Podium Admin can see a lot. Conversations, questions, plans, Activity history,
 
 The chat page is an easy way for a person to communicate with their orchestrators, and to observe the communications between two or more orchestrators. Subagents are part of it too. A new agent shows up in People and Agents as soon as it launches and leaves when it closes, and chat data follows the harness's resume window. A button on the orchestrator page opens a direct chat, and orchestrators called into a channel can now answer in it.
 
+<figure>
+  <img src="/images/blog/podium/podium-chat-160.jpg" alt="The Podium Chat page in dark mode. A sidebar lists the channels General and My group, a direct message named Lower Left, GH-Runner, and People and Agents rows for five orchestrators. The open thread is a conversation between those two orchestrators. GH-Runner's long reply reports measurements of the CI host: eight runners, the CPU and memory each end-to-end run uses, and what nine concurrent runs would need. Lower Left answers with a plan to run three shards at once. A box under the thread reads Add to this conversation, with a Send button." />
+  <figcaption>An orchestrator on my laptop asks the agent on the CI runner host to measure it, then uses the answer to decide how many end-to-end shards to run at once.</figcaption>
+</figure>
+
 A page where people and agents talk raises the question of who can read it. A "Who can read what" modal answers it in the console, so nobody has to dig through the docs to find out.
 
 ## Admin reads always notify the person
@@ -48,9 +53,19 @@ The Admin reports now cover:
 - Cache hit rate and context fullness
 - Answers sent and how long they waited
 
+<figure>
+  <img src="/images/blog/podium/podium-reporting-160.jpg" alt="The Podium Admin Tools report in dark mode, with a sidebar whose Reporting group lists Usage, Spend, People and groups, Sessions, Tools, Harness updates, Failures and Admin activity. Tools is selected. Four figures read 148,016 tool calls, 1,015 sessions, 86 median calls per session and 310 at the 90th percentile. A bar chart shows tool calls by day over 30 days, and a Calls by tool table starts with Bash at 64,291 calls, 43.4 percent, split into Claude Code and OpenCode columns." />
+  <figcaption>Bash is 43% of the 148,016 tool calls in the last 30 days, and the page keeps only tool names and counts, never arguments, paths or commands.</figcaption>
+</figure>
+
 Two of the additions are about change over time. Podium detects features that break after a harness update, and it shows the spread of versions and platforms across the people on a server. Report tables sort by any column header.
 
 Each person also gets a "My usage" page with only their own figures. That fits the previous section: Admins get the fleet view, and a person can see their own numbers without going through one.
+
+<figure>
+  <img src="/images/blog/podium/podium-myusage-160.jpg" alt="The Podium My usage page in dark mode. A line under the title reads that only you can see this page. Filters set the period to the last 30 days, grouped by day and broken down by model. A Spend by day section shows 3,525.22 dollars spent in the period and 881 sessions started, above a bar chart of daily spend that peaks at 675.56 dollars, then a table of sessions, tokens in, tokens out and cost for each day and model." />
+  <figcaption>The page is the person's alone, and it says plainly that spend is estimated from tokens, not from a bill.</figcaption>
+</figure>
 
 ## A third database
 
